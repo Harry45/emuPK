@@ -41,11 +41,28 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'sphinx'
+
+# The suffix(es) of source filenames.
+# You can specify multiple suffix as a list of string:
+#
+# source_suffix = ['.rst', '.md']
+source_suffix = '.rst'
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+
+# on_rtd = os.environ.get('READTHEDOCS') == 'True'
+
+# if on_rtd:
+#     html_theme = 'default'
+# else:
+#     html_theme = 'nature'
+
 html_theme = 'sphinx_rtd_theme'#'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
