@@ -1,10 +1,9 @@
 '''
-Author: (Dr to be) Arrykrishna Mootoovaloo
-Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
-Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Priors for our parameters (either emulator or likelihood)
+Module for important calculations involving the prior. For example, 
+
+- when scaling the Latin Hypercube samples to the appropriate prior range
+
+- when calculating the posterior if the emulator is connected with an MCMC sampler
 '''
 import scipy.stats
 import numpy as np
@@ -19,7 +18,7 @@ def entity(dictionary):
             - distribution, specificied by the key 'distribution'
 
             - parameter name, specified by the key 'parameter'
-            
+
             - specifications, specified by the key 'specs'
 
     :return: param_entity (dict) - a dictionary containing the parameter name and the distribution generated
