@@ -10,9 +10,15 @@ Welcome to emuPK's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   priors
    examples
 
+priors.entity
+-------------
+
+.. automodule:: priors.entity
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 Indices and tables
 ==================

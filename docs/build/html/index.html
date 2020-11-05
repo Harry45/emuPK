@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="priors module" href="priors.html" /> 
+    <link rel="next" title="Examples" href="examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,7 +83,6 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="priors.html">priors module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
@@ -155,12 +154,28 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="priors.html">priors module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="module-priors.entity">
+<span id="priors-entity"></span><h2>priors.entity<a class="headerlink" href="#module-priors.entity" title="Permalink to this headline">¶</a></h2>
+<p>Generates the entity of each parameter by using scipy.stats function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param</dt>
+<dd class="field-odd"><p>dictionary (dict) - a dictionary containing information for each parameter, that is,</p>
+<ul class="simple">
+<li><p>distribution, specificied by the key ‘distribution’</p></li>
+<li><p>parameter name, specified by the key ‘parameter’</p></li>
+<li><p>specifications, specified by the key ‘specs’</p></li>
+</ul>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>param_entity (dict) - a dictionary containing the parameter name and the distribution generated</p>
+</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -180,7 +195,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="priors.html" class="btn btn-neutral float-right" title="priors module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
