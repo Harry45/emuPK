@@ -19,13 +19,11 @@ def scale_points(lhs_points, save=True):
     '''
     Scale the training points according to the priors specified
 
-    Args:
-            lhs_points (str) : name of the file containing the LHS points
+	:param: lhs_points (str) - name of the file containing the LHS points
 
-            save (bool) : if True, the scaled inputs will be saved in a directory
+ 	:param: save (bool) - if True, the scaled inputs will be saved in a directory
 
-    Returns:
-            scaled (np.ndarray) : the scaled inputs
+	:return: scaled (np.ndarray) - the scaled inputs
     '''
 
     inputs = pd.read_csv('processing/design/' + lhs_points, index_col=0).values

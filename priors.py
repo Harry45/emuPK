@@ -14,14 +14,12 @@ def entity(dictionary):
     '''
     Generates the entity of each parameter by using scipy.stats function.
 
-    Args:
-            dictionary (dict) : a dictionary containing information for each parameter, that is,
+    :param: dictionary (dict) - a dictionary containing information for each parameter, that is,
             - distribution, specificied by the key 'distribution'
             - parameter name, specified by the key 'parameter'
             - specifications, specified by the key 'specs'
 
-    Returns:
-            param_entity (dict) : a dictionary containing the parameter name and the distribution generated
+    :return: param_entity (dict) - a dictionary containing the parameter name and the distribution generated
     '''
 
     dist = eval('scipy.stats.' + dictionary['distribution'])(*dictionary['specs'])
@@ -35,14 +33,12 @@ def all_entities(list_params):
     '''
     Generate all the priors once we have specified them.
 
-    Args:
-            list_params (list) : a list containing the description for each parameter and each description (dictionary) contains the following information:
+    :param: list_params (list) - a list containing the description for each parameter and each description (dictionary) contains the following information:
             - distribution, specificied by the key 'distribution'
             - parameter name, specified by the key 'parameter'
             - specifications, specified by the key 'specs'
 
-    Returns:
-            record (list) : a list containing the prior for each parameter, that is, each element contains the following information:
+    :return: record (list) - a list containing the prior for each parameter, that is, each element contains the following information:
             - parameter name, specifiied by the key 'parameter'
             - distribution, specified by the key 'distribution'
     '''
@@ -62,14 +58,12 @@ def all_entities(list_params):
 def log_prod_pdf(params_desc, parameters):
     '''
     Calculate the log-product for a set of parameters given the priors
+    
+    :param: params_desc (list) - list containing dictionaries of parameters. Each dictionary contains the parameter's name and its distribution.
 
-    Args:
-            params_desc (list) : list containing dictionaries of parameters. Each dictionary contains the parameter's name and its distribution.
+    :param: parameters (np.ndarray) - an array of parameters
 
-            parameters (np.ndarray) : an array of parameters
-
-    Returns:
-            log_sum (float) : the log-product of when the pdf of each parameter is multiplied with another
+    :return:  log_sum (float) - the log-product of when the pdf of each parameter is multiplied with another
     '''
 
     # number of parameters
