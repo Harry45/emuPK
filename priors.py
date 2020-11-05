@@ -15,8 +15,11 @@ def entity(dictionary):
     Generates the entity of each parameter by using scipy.stats function.
 
     :param: dictionary (dict) - a dictionary containing information for each parameter, that is,
+            
             - distribution, specificied by the key 'distribution'
+
             - parameter name, specified by the key 'parameter'
+            
             - specifications, specified by the key 'specs'
 
     :return: param_entity (dict) - a dictionary containing the parameter name and the distribution generated
@@ -44,7 +47,7 @@ def all_entities(list_params):
     :return: record (list) - a list containing the prior for each parameter, that is, each element contains the following information:
 
             - parameter name, specifiied by the key 'parameter'
-            
+
             - distribution, specified by the key 'distribution'
     '''
 

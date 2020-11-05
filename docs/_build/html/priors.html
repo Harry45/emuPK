@@ -172,15 +172,20 @@ Description : Priors for our parameters (either emulator or likelihood)</p>
 <dd><p>Generate all the priors once we have specified them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>list_params (list) - a list containing the description for each parameter and each description (dictionary) contains the following information:
-- distribution, specificied by the key ‘distribution’
-- parameter name, specified by the key ‘parameter’
-- specifications, specified by the key ‘specs’</p>
+<dd class="field-odd"><p>list_params (list) - a list containing the description for each parameter and each description (dictionary) contains the following information:</p>
+<ul class="simple">
+<li><p>distribution, specificied by the key ‘distribution’</p></li>
+<li><p>parameter name, specified by the key ‘parameter’</p></li>
+<li><p>specifications, specified by the key ‘specs’</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>record (list) - a list containing the prior for each parameter, that is, each element contains the following information:
-- parameter name, specifiied by the key ‘parameter’
-- distribution, specified by the key ‘distribution’</p>
+<dd class="field-even"><p><p>record (list) - a list containing the prior for each parameter, that is, each element contains the following information:</p>
+<ul class="simple">
+<li><p>parameter name, specifiied by the key ‘parameter’</p></li>
+<li><p>distribution, specified by the key ‘distribution’</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -191,10 +196,12 @@ Description : Priors for our parameters (either emulator or likelihood)</p>
 <dd><p>Generates the entity of each parameter by using scipy.stats function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>dictionary (dict) - a dictionary containing information for each parameter, that is,
-- distribution, specificied by the key ‘distribution’
-- parameter name, specified by the key ‘parameter’
-- specifications, specified by the key ‘specs’</p>
+<dd class="field-odd"><p>dictionary (dict) - a dictionary containing information for each parameter, that is,</p>
+<ul class="simple">
+<li><p>distribution, specificied by the key ‘distribution’</p></li>
+<li><p>parameter name, specified by the key ‘parameter’</p></li>
+<li><p>specifications, specified by the key ‘specs’</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>param_entity (dict) - a dictionary containing the parameter name and the distribution generated</p>
