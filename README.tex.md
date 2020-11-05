@@ -11,9 +11,3 @@ $$
 <p align="justify">
 	The priors on each parameter are as follows:
 </p>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> be2d172830e5baf8f248464f47f5807b3b7edbb5
