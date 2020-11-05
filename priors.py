@@ -34,12 +34,17 @@ def all_entities(list_params):
     Generate all the priors once we have specified them.
 
     :param: list_params (list) - a list containing the description for each parameter and each description (dictionary) contains the following information:
+
             - distribution, specificied by the key 'distribution'
+
             - parameter name, specified by the key 'parameter'
+
             - specifications, specified by the key 'specs'
 
     :return: record (list) - a list containing the prior for each parameter, that is, each element contains the following information:
+
             - parameter name, specifiied by the key 'parameter'
+            
             - distribution, specified by the key 'distribution'
     '''
 
