@@ -42,7 +42,7 @@ If you use this code in your research, please attribute `this paper <https://arx
    :caption: Contents:
 
    examples
-   modules
+   utilities
 
 
 Indices and tables
