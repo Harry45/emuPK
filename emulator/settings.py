@@ -51,7 +51,7 @@ use_nuisance = ['A_bary', 'A_IA', 'A_noise_z1', 'A_noise_z2', 'A_noise_z3']
 
 # For example, if we want uniform prior between 1.0 and 5.0, then
 # it is specified by loc and loc + scale, where scale=4.0
-# distribution = scipy.stats.uniform('uniform', 1.0, 4.0)
+# distribution = scipy.stats.uniform(1.0, 4.0)
 
 # First seven parameters are for the emulator
 p1 = {'distribution': 'uniform', 'parameter': 'omega_cdm', 'specs': [0.01, 0.39]}
