@@ -1,7 +1,7 @@
 emuPK
 ======
 
-*3D Matter Power Spectrum for Weak Lensing Analysis*
+*3D Matter Power Spectrum Emulator for Weak Lensing Analysis*
 
 .. image:: https://img.shields.io/badge/astro--ph-arXiv%3A2005.06551-red?style=flat
     :target: https://arxiv.org/abs/2005.06551
