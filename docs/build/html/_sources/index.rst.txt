@@ -38,7 +38,7 @@ If you use this code in your research, please attribute `this paper <https://arx
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Contents:
 
    examples
