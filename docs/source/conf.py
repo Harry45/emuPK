@@ -25,7 +25,7 @@ author = 'Arrykrishna Mootoovaloo'
 release = '0.0.1'
 
 
-autodoc_mock_imports = ['classy']
+autodoc_mock_imports = ['classy', 'GPy']
 
 # -- General configuration ---------------------------------------------------
 
