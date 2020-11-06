@@ -9,5 +9,5 @@ emuPK
 .. image:: https://readthedocs.org/projects/blendz/badge/
     :target: https://emupk.readthedocs.io/en/latest
 
-.. image:: https://img.shields.io/github/license/danmichaeljones/blendz.svg
+.. image:: https://img.shields.io/github/license/Harry45/emuPK
     :target: https://github.com/Harry45/emuPK
