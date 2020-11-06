@@ -26,7 +26,7 @@ If you use this code in your research, please cite `this paper <https://arxiv.or
 	@ARTICLE{2020MNRAS.497.2213M,
 	       author = {{Mootoovaloo}, Arrykrishna and {Heavens}, Alan F. and
 	         {Jaffe}, Andrew H. and {Leclercq}, Florent},
-	        title = "{Parameter inference for weak lensing using Gaussian Processes and MOPED}",
+	        title = {Parameter inference for weak lensing using Gaussian Processes and MOPED},
 	      journal = {\mnras},
 	     keywords = {gravitational lensing: weak, methods: data analysis, methods: statistical, cosmological parameters, large-scale structure of Universe, Astrophysics - Cosmology and Nongalactic Astrophysics},
 	         year = 2020,
