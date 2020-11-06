@@ -13,7 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../../emulator/'))
-
+sys.path.insert(0, os.path.abspath('../../emulator/utils/'))
 
 # -- Project information -----------------------------------------------------
 
@@ -25,6 +25,8 @@ author = 'Arrykrishna Mootoovaloo'
 release = '0.0.1'
 
 
+autodoc_mock_imports = ['classy']
+
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -33,17 +35,32 @@ release = '0.0.1'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx',
-]
+    'sphinx.ext.mathjax',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.intersphinx']
+
+# The suffix(es) of source filenames.
+# You can specify multiple suffix as a list of string:
+#
+# source_suffix = ['.rst', '.md']
+source_suffix = '.rst'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
+# Usually you set "language" from the command line for these cases.
+language = None
+
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
+# This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = []
 
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'sphinx'
+
+# If true, `todo` and `todoList` produce output, else they produce nothing.
+todo_include_todos = False
 
 # -- Options for HTML output -------------------------------------------------
 

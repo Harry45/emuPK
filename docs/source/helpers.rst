@@ -1,7 +1,7 @@
-priors module
-=============
+helpers
+*******
 
-.. automodule:: priors
+.. automodule:: helpers
    :members:
    :undoc-members:
    :show-inheritance:

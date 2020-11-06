@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to emuPK’s documentation! &mdash; emuPK 0.0.1 documentation</title>
+  <title>emuPK &mdash; emuPK 0.0.1 documentation</title>
   
 
   
@@ -84,6 +84,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 
             
@@ -130,7 +131,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Welcome to emuPK’s documentation!</li>
+      <li>emuPK</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -149,33 +150,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-emupk-s-documentation">
-<h1>Welcome to emuPK’s documentation!<a class="headerlink" href="#welcome-to-emupk-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="emupk">
+<h1>emuPK<a class="headerlink" href="#emupk" title="Permalink to this headline">¶</a></h1>
+<p><em>Emulator for 3D matter power spectrum</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">emuPK</span></code> is a</p>
+<div class="section" id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
+<p>If you use this code in your research, please attribute <a class="reference external" href="https://arxiv.org/abs/2005.06551">this paper</a>:</p>
+<div class="highlight-tex notranslate"><div class="highlight"><pre><span></span>@ARTICLE<span class="nb">{</span>2020MNRAS.497.2213M,
+       author = <span class="nb">{{</span>Mootoovaloo<span class="nb">}</span>, Arrykrishna and <span class="nb">{</span>Heavens<span class="nb">}</span>, Alan F. and
+         <span class="nb">{</span>Jaffe<span class="nb">}</span>, Andrew H. and <span class="nb">{</span>Leclercq<span class="nb">}</span>, Florent<span class="nb">}</span>,
+        title = &quot;<span class="nb">{</span>Parameter inference for weak lensing using Gaussian Processes and MOPED<span class="nb">}</span>&quot;,
+      journal = <span class="nb">{</span><span class="k">\mnras</span><span class="nb">}</span>,
+     keywords = <span class="nb">{</span>gravitational lensing: weak, methods: data analysis, methods: statistical, cosmological parameters, large-scale structure of Universe, Astrophysics - Cosmology and Nongalactic Astrophysics<span class="nb">}</span>,
+         year = 2020,
+        month = jul,
+       volume = <span class="nb">{</span>497<span class="nb">}</span>,
+       number = <span class="nb">{</span>2<span class="nb">}</span>,
+        pages = <span class="nb">{</span>2213-2226<span class="nb">}</span>,
+          doi = <span class="nb">{</span>10.1093/mnras/staa2102<span class="nb">}</span>,
+archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
+       eprint = <span class="nb">{</span>2005.06551<span class="nb">}</span>,
+ primaryClass = <span class="nb">{</span>astro-ph.CO<span class="nb">}</span>,
+       adsurl = <span class="nb">{</span>https://ui.adsabs.harvard.edu/abs/2020MNRAS.497.2213M<span class="nb">}</span>,
+      adsnote = <span class="nb">{</span>Provided by the SAO/NASA Astrophysics Data System<span class="nb">}</span>
+<span class="nb">}</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#usage">Usage</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
 </ul>
 </div>
-<div class="section" id="module-priors.entity">
-<span id="priors-entity"></span><h2>priors.entity<a class="headerlink" href="#module-priors.entity" title="Permalink to this headline">¶</a></h2>
-<p>Generates the entity of each parameter by using scipy.stats function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">param</dt>
-<dd class="field-odd"><p>dictionary (dict) - a dictionary containing information for each parameter, that is,</p>
-<ul class="simple">
-<li><p>distribution, specificied by the key ‘distribution’</p></li>
-<li><p>parameter name, specified by the key ‘parameter’</p></li>
-<li><p>specifications, specified by the key ‘specs’</p></li>
-</ul>
-</dd>
-<dt class="field-even">return</dt>
-<dd class="field-even"><p>param_entity (dict) - a dictionary containing the parameter name and the distribution generated</p>
-</dd>
-</dl>
 </div>
 </div>
 <div class="section" id="indices-and-tables">

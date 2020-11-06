@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>transformation &mdash; emuPK 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> emuPK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">emuPK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>transformation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for transformation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Author: Arrykrishna Mootoovaloo</span>
+<span class="sd">Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
+<span class="sd">Email : a.mootoovaloo17@imperial.ac.uk</span>
+<span class="sd">Affiliation : Imperial Centre for Inference and Cosmology</span>
+<span class="sd">Status : Under Development</span>
+<span class="sd">Description : Functions to transform the inputs and outputs</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="TRANS"><a class="viewcode-back" href="../transformation.html#transformation.TRANS">[docs]</a><span class="k">class</span> <span class="nc">TRANS</span><span class="p">:</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Module to perform all relevant transformation, for example, pre-whitening the inputs and logarithm (supports log10 transformation) for the outputs.</span>
+
+<span class="sd">    :param: theta (np.ndarray) : matrix of size N x d</span>
+
+<span class="sd">    :param: y (np.ndarray) : a vector of the output</span>
+
+<span class="sd">    :param: N is the number of training points</span>
+
+<span class="sd">    :param: d is the dimensionality of the problem</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="c1"># input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
+
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;The number of training points is smaller than the dimension of the problem. Reshape your array!&#39;</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">msg</span>
+
+        <span class="c1"># dimension of the problem</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># number of training points</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># y is a vector of size N</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># the transformation matrix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># the transformed input parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta_trans</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># store the transformed output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_trans</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="TRANS.x_transform"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.x_transform">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Transform the inputs (pre-whitening step)</span>
+
+<span class="sd">        Inputs</span>
+<span class="sd">        ------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        theta_trans (np.ndarray) : transformed input parameters</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="c1"># calculate the covariance of the inputs</span>
+        <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+        <span class="c1"># calculate the Singular Value Decomposition</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
+
+        <span class="c1"># see PICO paper for this step</span>
+        <span class="n">m_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+        <span class="c1"># the transformation matrix</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m_diag</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+        <span class="c1"># calculate the transformed input parameters</span>
+        <span class="n">theta_trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mu_matrix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># store the transformed inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta_trans</span> <span class="o">=</span> <span class="n">theta_trans</span>
+
+        <span class="k">return</span> <span class="n">theta_trans</span></div>
+
+<div class="viewcode-block" id="TRANS.x_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.x_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xtest</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Given a test point, we transform the test point in the appropriate basis</span>
+
+<span class="sd">        Inputs</span>
+<span class="sd">        ------</span>
+<span class="sd">        xtext (np.ndarray) : a vector of dimension d for the test point</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        x_trans (np.ndarray) : the transformed input parameters</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="c1"># reshape the input</span>
+        <span class="n">xtest</span> <span class="o">=</span> <span class="n">xtest</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">,)</span>
+
+        <span class="c1"># tranform the input using the transformation matrix</span>
+        <span class="n">x_trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mu_matrix</span><span class="p">,</span> <span class="n">xtest</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">x_trans</span></div>
+
+<div class="viewcode-block" id="TRANS.y_transform"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.y_transform">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Transform the output (depends on whether we want this criterion)</span>
+
+<span class="sd">        If all the outputs are positive, then y_min = 0,</span>
+<span class="sd">        otherwise the minimum is computed and the outputs are shifted by</span>
+<span class="sd">        this amount before the logarithm transformation is applied</span>
+
+<span class="sd">        Inputs</span>
+<span class="sd">        ------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        y_trans (np.ndarray) : array for the transformed output</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+
+            <span class="c1"># set the minimum to 0.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+            <span class="c1"># calculate te logarithm of the outputs</span>
+            <span class="n">y_trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+            <span class="c1"># store the transformed output</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y_trans</span> <span class="o">=</span> <span class="n">y_trans</span>
+
+            <span class="k">return</span> <span class="n">y_trans</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># compute minimum y</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+            <span class="c1"># calcualte the logarithm of the outputs</span>
+            <span class="n">y_trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span>
+
+            <span class="c1"># store the transformed output</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y_trans</span> <span class="o">=</span> <span class="n">y_trans</span>
+
+            <span class="k">return</span> <span class="n">y_trans</span></div>
+
+<div class="viewcode-block" id="TRANS.y_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.y_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_original</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Given a response/output which is not in the training set, this</span>
+<span class="sd">        function will do the forward log_10 transformation.</span>
+
+<span class="sd">        Inputs</span>
+<span class="sd">        ------</span>
+<span class="sd">        y_original (float or np.ndarray) : original output</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        y_trans_test (array) : transformed output</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">y_trans_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y_original</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">y_trans_test</span></div>
+
+<div class="viewcode-block" id="TRANS.y_inv_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.y_inv_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_inv_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Given a response (a prediction), this function will do</span>
+<span class="sd">        the inverse transformation (from log_10 to the original function).</span>
+
+<span class="sd">        Inputs</span>
+<span class="sd">        ------</span>
+<span class="sd">        y_test (float or np.ndarray) : a test (transformed) response (output)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        y_inv (np.ndarray) : original (predicted) output</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">y_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span>
+
+        <span class="k">return</span> <span class="n">y_inv</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Arrykrishna Mootoovaloo
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
