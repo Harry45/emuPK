@@ -3,8 +3,7 @@ emuPK
 
 *3D Matter Power Spectrum for Weak Lensing Analysis*
 
-.. image:: https://img.shields.io/badge/astro--ph-arXiv%3A2005.06551-red
-?style=flat
+.. image:: https://img.shields.io/badge/astro--ph-arXiv%3A2005.06551-red?style=plastic&logo=appveyor
     :target: https://arxiv.org/abs/2005.06551
 
 .. image:: https://readthedocs.org/projects/blendz/badge/
