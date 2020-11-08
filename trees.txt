@@ -20,8 +20,5 @@
 │   └── test_semiGP.ipynb
 ├── README.rst
 ├── requirements.txt
-├── tests
-│   └── test.md
-└── trees.txt
-
-12 directories, 12 files
+└── tests
+    └── test.md

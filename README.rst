@@ -69,5 +69,5 @@ Directory Structure
 	│   └── test_semiGP.ipynb
 	├── README.rst
 	├── requirements.txt
-	├── tests
+	└── tests
 	    └── test.md
