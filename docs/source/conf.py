@@ -37,7 +37,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
-    'sphinx.ext.intersphinx']
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.imgmath']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
