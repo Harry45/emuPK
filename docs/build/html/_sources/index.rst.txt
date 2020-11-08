@@ -46,8 +46,7 @@ emuPK
 	  - Free amplitude baryon feedback parameter
 	  - :math:`\mathcal{U}[0.0, 2.0]`
 
-Citation
---------
+**Citation**
 
 If you use this code in your research, please cite the following papers: `Paper 1 <https://arxiv.org/abs/2005.06551>`_ and Paper 2 (in preparation):
 
