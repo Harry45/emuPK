@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="examples.html" /> 
+    <link rel="next" title="Weak Lensing Power Spectrum" href="wl.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,9 +82,13 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Usage</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wl.html">Weak Lensing Power Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Codes</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
@@ -200,17 +204,6 @@
 </tr>
 </tbody>
 </table>
-<div class="section" id="weak-lensing-power-spectrum">
-<h2>Weak Lensing Power Spectrum<a class="headerlink" href="#weak-lensing-power-spectrum" title="Permalink to this headline">¶</a></h2>
-<p>One can use the 3D matter power spectrum to calculate the EE, GI and II power spectra for weak lensing. For this particular application, <img class="math" src="_images/math/23fa1e25c6d2a03b5199c52f35a16a5c719aafe9.png" alt="P_{\delta}(k,z)\rightarrow P_{\text{emu}}(k,z)"/>. The EE, GI and II power spectra are given respectively by:</p>
-<div class="math">
-<p><img src="_images/math/0df2d7cd652db36f82379659b90ba56d8670160d.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{EE}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)"/></p>
-</div><div class="math">
-<p><img src="_images/math/a577e4c092bf1f04636ef8e4c1163c04cccb1c0e.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{GI}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)n_{j}(\chi)+w_{j}(\chi)n_{i}(\chi)}{\chi^{2}}P_{\delta}(k,\chi)\,F(\chi)"/></p>
-</div><div class="math">
-<p><img src="_images/math/52bbed476553606085dc5cc47e76c97fd53e6437.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{II}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)\,F^{2}(\chi)"/></p>
-</div><p>where <img class="math" src="_images/math/52b130781cb6e2b47a5efb235ac1cb4162210d12.png" alt="\chi"/> is the comoving radial distance and <img class="math" src="_images/math/3bc26350fb471225030e3832200115979374c187.png" alt="n(\chi)"/> is the (tomographic) redshift distribution. Please see paper below for full definition of <img class="math" src="_images/math/d80e34aa841137a987929afc0148e2c15f01aa40.png" alt="F(\chi)"/> and <img class="math" src="_images/math/5db24105c81ebf5247ec7298d5d8d38f3ddcfe63.png" alt="w(\chi)"/>.</p>
-</div>
 <div class="section" id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
 <p>If you use this code in your research, please cite <a class="reference external" href="https://arxiv.org/abs/2005.06551">this paper</a>:</p>
@@ -234,13 +227,25 @@ archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
 <span class="nb">}</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Usage</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wl.html">Weak Lensing Power Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a></li>
 </ul>
-</li>
+</div>
+</div>
+<div class="section" id="api-documentation">
+<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Here we provide a brief overview of the code structure. Please see Github for full code structure. We do not cover each code in full detail here.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Codes</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="priors.html#module-priors">Functions</a></li>
 </ul>
@@ -253,7 +258,6 @@ archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -273,7 +277,7 @@ archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="wl.html" class="btn btn-neutral float-right" title="Weak Lensing Power Spectrum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

@@ -46,24 +46,6 @@ emuPK
 	  - Free amplitude baryon feedback parameter
 	  - :math:`\mathcal{U}[0.0, 2.0]`
 
-Weak Lensing Power Spectrum
----------------------------
-One can use the 3D matter power spectrum to calculate the EE, GI and II power spectra for weak lensing. For this particular application, :math:`P_{\delta}(k,z)\rightarrow P_{\text{emu}}(k,z)`. The EE, GI and II power spectra are given respectively by:
-
-.. math::
-
-	\mathcal{C}_{\ell,\,ij}^{\text{EE}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)
-
-.. math::
-
-	\mathcal{C}_{\ell,\,ij}^{\text{GI}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)n_{j}(\chi)+w_{j}(\chi)n_{i}(\chi)}{\chi^{2}}P_{\delta}(k,\chi)\,F(\chi)
-
-.. math::
-
-	\mathcal{C}_{\ell,\,ij}^{\text{II}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)\,F^{2}(\chi)
-
-where :math:`\chi` is the comoving radial distance and :math:`n(\chi)` is the (tomographic) redshift distribution. Please see paper below for full definition of :math:`F(\chi)` and :math:`w(\chi)`.
-
 Citation
 --------
 
@@ -91,11 +73,25 @@ If you use this code in your research, please cite `this paper <https://arxiv.or
 	}
 
 
+Background
+==========
+In this section, we explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator. 
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Usage
 
-   examples
+   wl
+   gettingStarted
+   
+API Documentation
+=================
+Here we provide a brief overview of the code structure. Please see Github for full code structure. We do not cover each code in full detail here.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Codes
+
    priors
    utilities
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Examples &mdash; emuPK 0.0.1 documentation</title>
+  <title>Weak Lensing Power Spectrum &mdash; emuPK 0.0.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Priors" href="priors.html" />
+    <link rel="next" title="Examples" href="gettingStarted.html" />
     <link rel="prev" title="emuPK" href="index.html" /> 
 </head>
 
@@ -83,12 +83,13 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption"><span class="caption-text">Usage</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Weak Lensing Power Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">Codes</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
@@ -137,13 +138,13 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Examples</li>
+      <li>Weak Lensing Power Spectrum</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/wl.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,11 +157,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-</div>
+  <div class="section" id="weak-lensing-power-spectrum">
+<h1>Weak Lensing Power Spectrum<a class="headerlink" href="#weak-lensing-power-spectrum" title="Permalink to this headline">¶</a></h1>
+<p>One can use the 3D matter power spectrum to calculate the EE, GI and II power spectra for weak lensing. For this particular application, <img class="math" src="_images/math/23fa1e25c6d2a03b5199c52f35a16a5c719aafe9.png" alt="P_{\delta}(k,z)\rightarrow P_{\text{emu}}(k,z)"/>. The EE, GI and II power spectra are given respectively by:</p>
+<div class="math">
+<p><img src="_images/math/0df2d7cd652db36f82379659b90ba56d8670160d.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{EE}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)"/></p>
+</div><div class="math">
+<p><img src="_images/math/a577e4c092bf1f04636ef8e4c1163c04cccb1c0e.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{GI}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)n_{j}(\chi)+w_{j}(\chi)n_{i}(\chi)}{\chi^{2}}P_{\delta}(k,\chi)\,F(\chi)"/></p>
+</div><div class="math">
+<p><img src="_images/math/52bbed476553606085dc5cc47e76c97fd53e6437.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{II}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)\,F^{2}(\chi)"/></p>
+</div><p>where <img class="math" src="_images/math/52b130781cb6e2b47a5efb235ac1cb4162210d12.png" alt="\chi"/> is the comoving radial distance and <img class="math" src="_images/math/3bc26350fb471225030e3832200115979374c187.png" alt="n(\chi)"/> is the (tomographic) redshift distribution. Please see paper below for full definition of <img class="math" src="_images/math/d80e34aa841137a987929afc0148e2c15f01aa40.png" alt="F(\chi)"/> and <img class="math" src="_images/math/5db24105c81ebf5247ec7298d5d8d38f3ddcfe63.png" alt="w(\chi)"/>.</p>
 </div>
 
 
@@ -171,7 +177,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="priors.html" class="btn btn-neutral float-right" title="Priors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gettingStarted.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="emuPK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
