@@ -1,10 +1,11 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
+# Email : a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Functions for linear algebra calculations
+Important linear algebra operations for Gaussian Process
 '''
 
 import numpy as np
@@ -20,21 +21,17 @@ def solve(matrix, b_vec, return_chol=False):
 
     If A is diagonal, the calculations are simpler (do not require any inversions)
 
-    Inputs
-    ------
-    matrix (np.ndarray) : 'A' matrix of size N x N
+    :param: matrix (np.ndarray) : 'A' matrix of size N x N
 
-    b_vec (np.ndarray) : 'b' vector of size N
+    :param: b_vec (np.ndarray) : 'b' vector of size N
 
-    return_chol (bool) : if True, the Cholesky factor will be retuned
+    :param: return_chol (bool) : if True, the Cholesky factor will be retuned
 
-    Returns
-    -------
-    dummy (np.ndarray) : 'x' in the equation above
+    :return: dummy (np.ndarray) : 'x' in the equation above
 
     If return_chol is True,
 
-    chol_factor (np.ndarray) : the Cholesky factor is returned
+    :return: chol_factor (np.ndarray) : the Cholesky factor is returned
     '''
 
     if diagonal(matrix):
@@ -69,19 +66,15 @@ def matrix_inverse(matrix, return_chol=False):
 
     If we are dealing with diagonal matrix, inversion is simple
 
-    Inputs
-    ------
-    matrix (np.ndarray) : matrix of size N x N
+    :param: matrix (np.ndarray) : matrix of size N x N
 
-    return_chol (bool) : if True, the Cholesky factor will be returned
+    :param: return_chol (bool) : if True, the Cholesky factor will be returned
 
-    Returns
-    -------
-    dummy (np.ndarray) : matrix inverse
+    :return: dummy (np.ndarray) : matrix inverse
 
     If return_chol is True,
 
-    chol_factor (np.ndarray) : the Cholesky factor
+    :return: chol_factor (np.ndarray) : the Cholesky factor
     '''
 
     # check if matrix is diagonal first
@@ -111,13 +104,9 @@ def diagonal(matrix):
     '''
     Check if a matrix is diagonal
 
-    Inputs
-    ------
-    matrix (np.ndarray) : matrix of size N x N
+    :param: matrix (np.ndarray) : matrix of size N x N
 
-    Returns
-    -------
-    cond (bool) : if diagonal, True
+    :return: ond (bool) : if diagonal, True
     '''
 
     if np.count_nonzero(matrix - np.diag(np.diagonal(matrix))) == 0:
