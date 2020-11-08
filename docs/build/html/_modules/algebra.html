@@ -148,13 +148,14 @@
            <div itemprop="articleBody">
             
   <h1>Source code for algebra</h1><div class="highlight"><pre>
-<span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Author: Arrykrishna Mootoovaloo</span>
-<span class="sd">Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
-<span class="sd">Email : a.mootoovaloo17@imperial.ac.uk</span>
-<span class="sd">Affiliation : Imperial Centre for Inference and Cosmology</span>
-<span class="sd">Status : Under Development</span>
-<span class="sd">Description : Functions for linear algebra calculations</span>
+<span></span><span class="c1"># Author: Arrykrishna Mootoovaloo</span>
+<span class="c1"># Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
+<span class="c1"># Email : a.mootoovaloo17@imperial.ac.uk</span>
+<span class="c1"># Affiliation : Imperial Centre for Inference and Cosmology</span>
+<span class="c1"># Status : Under Development</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Important linear algebra operations for Gaussian Process</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -170,21 +171,17 @@
 
 <span class="sd">    If A is diagonal, the calculations are simpler (do not require any inversions)</span>
 
-<span class="sd">    Inputs</span>
-<span class="sd">    ------</span>
-<span class="sd">    matrix (np.ndarray) : &#39;A&#39; matrix of size N x N</span>
+<span class="sd">    :param: matrix (np.ndarray) : &#39;A&#39; matrix of size N x N</span>
 
-<span class="sd">    b_vec (np.ndarray) : &#39;b&#39; vector of size N</span>
+<span class="sd">    :param: b_vec (np.ndarray) : &#39;b&#39; vector of size N</span>
 
-<span class="sd">    return_chol (bool) : if True, the Cholesky factor will be retuned</span>
+<span class="sd">    :param: return_chol (bool) : if True, the Cholesky factor will be retuned</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    dummy (np.ndarray) : &#39;x&#39; in the equation above</span>
+<span class="sd">    :return: dummy (np.ndarray) : &#39;x&#39; in the equation above</span>
 
 <span class="sd">    If return_chol is True,</span>
 
-<span class="sd">    chol_factor (np.ndarray) : the Cholesky factor is returned</span>
+<span class="sd">    :return: chol_factor (np.ndarray) : the Cholesky factor is returned</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
@@ -219,19 +216,15 @@
 
 <span class="sd">    If we are dealing with diagonal matrix, inversion is simple</span>
 
-<span class="sd">    Inputs</span>
-<span class="sd">    ------</span>
-<span class="sd">    matrix (np.ndarray) : matrix of size N x N</span>
+<span class="sd">    :param: matrix (np.ndarray) : matrix of size N x N</span>
 
-<span class="sd">    return_chol (bool) : if True, the Cholesky factor will be returned</span>
+<span class="sd">    :param: return_chol (bool) : if True, the Cholesky factor will be returned</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    dummy (np.ndarray) : matrix inverse</span>
+<span class="sd">    :return: dummy (np.ndarray) : matrix inverse</span>
 
 <span class="sd">    If return_chol is True,</span>
 
-<span class="sd">    chol_factor (np.ndarray) : the Cholesky factor</span>
+<span class="sd">    :return: chol_factor (np.ndarray) : the Cholesky factor</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># check if matrix is diagonal first</span>
@@ -261,13 +254,9 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Check if a matrix is diagonal</span>
 
-<span class="sd">    Inputs</span>
-<span class="sd">    ------</span>
-<span class="sd">    matrix (np.ndarray) : matrix of size N x N</span>
+<span class="sd">    :param: matrix (np.ndarray) : matrix of size N x N</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    cond (bool) : if diagonal, True</span>
+<span class="sd">    :return: ond (bool) : if diagonal, True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">matrix</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
