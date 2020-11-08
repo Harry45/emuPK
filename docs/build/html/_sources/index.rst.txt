@@ -49,7 +49,7 @@ emuPK
 Citation
 --------
 
-If you use this code in your research, please cite `this paper <https://arxiv.org/abs/2005.06551>`_:
+If you use this code in your research, please cite the following papers: `Paper 1 <https://arxiv.org/abs/2005.06551>`_ and Paper 2 (in preparation):
 
 .. code-block:: tex
 
@@ -86,7 +86,7 @@ In this section, we explain briefly how the emulator can be used in a weak lensi
    
 API Documentation
 =================
-Here we provide a brief overview of the code structure. Please see Github for full code structure. We do not cover each code in full detail here.
+Here we provide a brief overview of the code structure. Please see `Github <https://github.com/Harry45/emuPK>`_ for full code structure. We do not cover each code in full detail here.
 
 .. toctree::
    :maxdepth: 2
