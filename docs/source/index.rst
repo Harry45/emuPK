@@ -8,11 +8,35 @@ emuPK
 
 *Emulator for 3D matter power spectrum*
 
-``emuPK`` is an emulator for generating the 3D matter power spectrum 
+``emuPK`` is an emulator for generating the 3D matter power spectrum which can be used in conjunction with a weak lensing likelihood code to derive constraints on cosmological parameters. It is built based on the following parameters and prior range:
 
-Since Pythagoras, we know that :math:`a^2 + b^2 = c^2`.
+.. list-table:: Title
+   :widths: 25 25 50
+   :header-rows: 1
 
-However, 
+   * - Heading row 1, column 1
+     - Heading row 1, column 2
+     - Heading row 1, column 3
+   * - Row 1, column 1
+     -
+     - Row 1, column 3
+   * - Row 2, column 1
+     - Row 2, column 2
+     - Row 2, column 3
+
+     
+.. ==========   							===========   								===========   
+.. Parameters   							Description   								Prior Range
+.. ==========  							===========   								===========
+.. :math: \Omega_{\textrm{cdm}}h^{2}  		CDM density   								Prior Range
+.. :math: \Omega_{\textrm{b}h^{2}    		Baryon density   							Prior Range
+.. :math: \textrm{ln}10^{10}A_{s}   		Scalar spectrum amplitude   				Prior Range
+.. :math: n_{s}  							Scalar spectral index   					Prior Range
+.. :math: h   								Hubble parameter   							Prior Range
+.. :math: \Sigma m_{\nu}   				Neutrino mass (eV)   						Prior Range
+.. :math: A_{\textrm{bary}}   				Free amplitude baryon feedback parameter   	Prior Range
+.. ==========  							===========   								===========
+
 
 Citation
 --------
