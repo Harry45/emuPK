@@ -1,4 +1,4 @@
-transformation
+Transformation
 **************
 
 .. automodule:: transformation

@@ -41,3 +41,33 @@ If you use this code in your research, please cite `this paper <https://arxiv.or
 	       adsurl = {https://ui.adsabs.harvard.edu/abs/2020MNRAS.497.2213M},
 	      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 	}
+
+Directory Structure
+-------------------
+
+.. code:: bash
+
+	.
+	├── docs
+	│   ├── build
+	│   ├── make.bat
+	│   ├── Makefile
+	│   └── source
+	├── emulator
+	│   ├── cosmoclass
+	│   ├── gps
+	│   ├── ml
+	│   ├── priors.py
+	│   ├── processing
+	│   ├── __pycache__
+	│   ├── settings.py
+	│   ├── train_gps.py
+	│   ├── training_points.py
+	│   └── utils
+	├── LICENSE
+	├── notebooks
+	│   └── test_semiGP.ipynb
+	├── README.rst
+	├── requirements.txt
+	├── tests
+	    └── test.md

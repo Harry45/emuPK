@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
 
   
   
@@ -84,6 +85,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
 
@@ -155,32 +157,63 @@
 <p><em>Emulator for 3D matter power spectrum</em></p>
 <p><code class="docutils literal notranslate"><span class="pre">emuPK</span></code> is an emulator for generating the 3D matter power spectrum which can be used in conjunction with a weak lensing likelihood code to derive constraints on cosmological parameters. It is built based on the following parameters and prior range:</p>
 <table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">Title</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Definition of the parameter inputs to the emulator</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
-<col style="width: 25%" />
 <col style="width: 50%" />
+<col style="width: 25%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Heading row 1, column 1</p></th>
-<th class="head"><p>Heading row 1, column 2</p></th>
-<th class="head"><p>Heading row 1, column 3</p></th>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Prior</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Row 1, column 1</p></td>
-<td></td>
-<td><p>Row 1, column 3</p></td>
+<tr class="row-even"><td><p><img class="math" src="_images/math/a43c6ce2bf7d8a5442ab0618e98687d5e60d0e7b.png" alt="\Omega_{\text{cdm}}h^{2}"/></p></td>
+<td><p>CDM density</p></td>
+<td><p><img class="math" src="_images/math/a71d5d266f79cf23132122b70a2d9821a7bfe5b1.png" alt="\mathcal{U}[0.01, 0.40]"/></p></td>
 </tr>
-<tr class="row-odd"><td><p>Row 2, column 1</p></td>
-<td><p>Row 2, column 2</p></td>
-<td><p>Row 2, column 3</p></td>
+<tr class="row-odd"><td><p><img class="math" src="_images/math/da4b811cd350252553939255becaf76ae9ab65d8.png" alt="\Omega_{\text{b}}h^{2}"/></p></td>
+<td><p>Baryon density</p></td>
+<td><p><img class="math" src="_images/math/4117bba5ca6206cc3648fb5a63a4a9631ac563e2.png" alt="\mathcal{U}[0.019, 0.026]"/></p></td>
+</tr>
+<tr class="row-even"><td><p><img class="math" src="_images/math/8db0dfdbedbb2a681c737b540e52ca6bf6ff5594.png" alt="\text{ln}(10^{10}A_{s})"/></p></td>
+<td><p>Scalar spectrum amplitude</p></td>
+<td><p><img class="math" src="_images/math/cb55099f30fff96e1d1279949245c8944939b329.png" alt="\mathcal{U}[1.7, 5.0]"/></p></td>
+</tr>
+<tr class="row-odd"><td><p><img class="math" src="_images/math/1d0f7d851d5079515e80fca74754146de5fc52f2.png" alt="n_{s}"/></p></td>
+<td><p>Scalar spectral index</p></td>
+<td><p><img class="math" src="_images/math/31e1d98d2606e68caebde9d14de97b863870454c.png" alt="\mathcal{U}[0.7, 1.3]"/></p></td>
+</tr>
+<tr class="row-even"><td><p><img class="math" src="_images/math/4c120f773ab4e1c59ad2bd44aae969ce24dd190a.png" alt="h"/></p></td>
+<td><p>Hubble parameter</p></td>
+<td><p><img class="math" src="_images/math/eef00fb9f12039c34e8220f2ded32d3e6f24bc61.png" alt="\mathcal{U}[0.64, 0.82]"/></p></td>
+</tr>
+<tr class="row-odd"><td><p><img class="math" src="_images/math/03573a604a36f9c32795bab91923d01c9427ad0f.png" alt="\Sigma m_{\nu}"/></p></td>
+<td><p>Neutrino mass (eV)</p></td>
+<td><p><img class="math" src="_images/math/b3ad9581c8fdfcfcd2d74587d57fb2bcd49327c5.png" alt="\mathcal{U}[0.06, 1.0]"/></p></td>
+</tr>
+<tr class="row-even"><td><p><img class="math" src="_images/math/f23f81e2fd62755dd85379fbe40e39b38c7ba5ab.png" alt="A_{\text{bary}}"/></p></td>
+<td><p>Free amplitude baryon feedback parameter</p></td>
+<td><p><img class="math" src="_images/math/79fda1c18fd47b1a8a95e9b58c4e75db0afb08ac.png" alt="\mathcal{U}[0.0, 2.0]"/></p></td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="weak-lensing-power-spectrum">
+<h2>Weak Lensing Power Spectrum<a class="headerlink" href="#weak-lensing-power-spectrum" title="Permalink to this headline">¶</a></h2>
+<p>One can use the 3D matter power spectrum to calculate the EE, GI and II power spectra for weak lensing. For this particular application, <img class="math" src="_images/math/23fa1e25c6d2a03b5199c52f35a16a5c719aafe9.png" alt="P_{\delta}(k,z)\rightarrow P_{\text{emu}}(k,z)"/>. The EE, GI and II power spectra are given respectively by:</p>
+<div class="math">
+<p><img src="_images/math/0df2d7cd652db36f82379659b90ba56d8670160d.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{EE}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)"/></p>
+</div><div class="math">
+<p><img src="_images/math/a577e4c092bf1f04636ef8e4c1163c04cccb1c0e.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{GI}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)n_{j}(\chi)+w_{j}(\chi)n_{i}(\chi)}{\chi^{2}}P_{\delta}(k,\chi)\,F(\chi)"/></p>
+</div><div class="math">
+<p><img src="_images/math/52bbed476553606085dc5cc47e76c97fd53e6437.png" alt="\mathcal{C}_{\ell,\,ij}^{\text{II}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)\,F^{2}(\chi)"/></p>
+</div><p>where <img class="math" src="_images/math/52b130781cb6e2b47a5efb235ac1cb4162210d12.png" alt="\chi"/> is the comoving radial distance and <img class="math" src="_images/math/3bc26350fb471225030e3832200115979374c187.png" alt="n(\chi)"/> is the (tomographic) redshift distribution. Please see paper below for full definition of <img class="math" src="_images/math/d80e34aa841137a987929afc0148e2c15f01aa40.png" alt="F(\chi)"/> and <img class="math" src="_images/math/5db24105c81ebf5247ec7298d5d8d38f3ddcfe63.png" alt="w(\chi)"/>.</p>
+</div>
 <div class="section" id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
-<p>If you use this code in your research, please attribute <a class="reference external" href="https://arxiv.org/abs/2005.06551">this paper</a>:</p>
+<p>If you use this code in your research, please cite <a class="reference external" href="https://arxiv.org/abs/2005.06551">this paper</a>:</p>
 <div class="highlight-tex notranslate"><div class="highlight"><pre><span></span>@ARTICLE<span class="nb">{</span>2020MNRAS.497.2213M,
        author = <span class="nb">{{</span>Mootoovaloo<span class="nb">}</span>, Arrykrishna and <span class="nb">{</span>Heavens<span class="nb">}</span>, Alan F. and
          <span class="nb">{</span>Jaffe<span class="nb">}</span>, Andrew H. and <span class="nb">{</span>Leclercq<span class="nb">}</span>, Florent<span class="nb">}</span>,
@@ -208,11 +241,15 @@ archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
 <li class="toctree-l2"><a class="reference internal" href="examples.html#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="priors.html#module-priors">Functions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="helpers.html">helpers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">kernel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transformation.html">transformation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algebra.html">algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kernel.html">Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transformation.html">Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algebra.html">Algebra</a></li>
 </ul>
 </li>
 </ul>

@@ -1,4 +1,4 @@
-kernel
+Kernel
 ******
 
 .. automodule:: kernel

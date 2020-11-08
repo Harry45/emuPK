@@ -1,4 +1,4 @@
-algebra
+Algebra
 *******
 
 .. automodule:: algebra

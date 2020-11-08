@@ -10,38 +10,64 @@ emuPK
 
 ``emuPK`` is an emulator for generating the 3D matter power spectrum which can be used in conjunction with a weak lensing likelihood code to derive constraints on cosmological parameters. It is built based on the following parameters and prior range:
 
-.. list-table:: Title
-   :widths: 25 25 50
-   :header-rows: 1
+.. list-table:: Definition of the parameter inputs to the emulator
+	:header-rows: 1
+	:widths: 1 2 1
 
-   * - Heading row 1, column 1
-     - Heading row 1, column 2
-     - Heading row 1, column 3
-   * - Row 1, column 1
-     -
-     - Row 1, column 3
-   * - Row 2, column 1
-     - Row 2, column 2
-     - Row 2, column 3
+	* - Parameters
+	  - Description
+	  - Prior
 
-     
-.. ==========   							===========   								===========   
-.. Parameters   							Description   								Prior Range
-.. ==========  							===========   								===========
-.. :math: \Omega_{\textrm{cdm}}h^{2}  		CDM density   								Prior Range
-.. :math: \Omega_{\textrm{b}h^{2}    		Baryon density   							Prior Range
-.. :math: \textrm{ln}10^{10}A_{s}   		Scalar spectrum amplitude   				Prior Range
-.. :math: n_{s}  							Scalar spectral index   					Prior Range
-.. :math: h   								Hubble parameter   							Prior Range
-.. :math: \Sigma m_{\nu}   				Neutrino mass (eV)   						Prior Range
-.. :math: A_{\textrm{bary}}   				Free amplitude baryon feedback parameter   	Prior Range
-.. ==========  							===========   								===========
+	* - :math:`\Omega_{\text{cdm}}h^{2}`
+	  - CDM density 
+	  - :math:`\mathcal{U}[0.01, 0.40]`
 
+	* - :math:`\Omega_{\text{b}}h^{2}`
+	  - Baryon density 
+	  - :math:`\mathcal{U}[0.019, 0.026]`
+
+	* - :math:`\text{ln}(10^{10}A_{s})`
+	  - Scalar spectrum amplitude
+	  - :math:`\mathcal{U}[1.7, 5.0]`
+
+	* - :math:`n_{s}`
+	  - Scalar spectral index 
+	  - :math:`\mathcal{U}[0.7, 1.3]`
+
+	* - :math:`h`
+	  - Hubble parameter
+	  - :math:`\mathcal{U}[0.64, 0.82]`
+
+	* - :math:`\Sigma m_{\nu}`
+	  - Neutrino mass (eV)
+	  - :math:`\mathcal{U}[0.06, 1.0]`
+
+	* - :math:`A_{\text{bary}}`
+	  - Free amplitude baryon feedback parameter
+	  - :math:`\mathcal{U}[0.0, 2.0]`
+
+Weak Lensing Power Spectrum
+---------------------------
+One can use the 3D matter power spectrum to calculate the EE, GI and II power spectra for weak lensing. For this particular application, :math:`P_{\delta}(k,z)\rightarrow P_{\text{emu}}(k,z)`. The EE, GI and II power spectra are given respectively by:
+
+.. math::
+
+	\mathcal{C}_{\ell,\,ij}^{\text{EE}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)
+
+.. math::
+
+	\mathcal{C}_{\ell,\,ij}^{\text{GI}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)n_{j}(\chi)+w_{j}(\chi)n_{i}(\chi)}{\chi^{2}}P_{\delta}(k,\chi)\,F(\chi)
+
+.. math::
+
+	\mathcal{C}_{\ell,\,ij}^{\text{II}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)\,F^{2}(\chi)
+
+where :math:`\chi` is the comoving radial distance and :math:`n(\chi)` is the (tomographic) redshift distribution. Please see paper below for full definition of :math:`F(\chi)` and :math:`w(\chi)`.
 
 Citation
 --------
 
-If you use this code in your research, please attribute `this paper <https://arxiv.org/abs/2005.06551>`_:
+If you use this code in your research, please cite `this paper <https://arxiv.org/abs/2005.06551>`_:
 
 .. code-block:: tex
 
@@ -70,6 +96,7 @@ If you use this code in your research, please attribute `this paper <https://arx
    :caption: Contents:
 
    examples
+   priors
    utilities
 
 
