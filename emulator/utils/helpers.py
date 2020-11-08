@@ -1,10 +1,11 @@
+# Author: (Dr to be) Arrykrishna Mootoovaloo
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: (Dr to be) Arrykrishna Mootoovaloo
-Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Some helper functions
+Important functions to store/load files in a compressed format. 
 '''
 
 import os

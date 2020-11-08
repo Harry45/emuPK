@@ -1,10 +1,11 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
+# Email : a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Functions to transform the inputs and outputs
+Functions to transform the inputs and outputs
 '''
 
 import numpy as np
@@ -55,13 +56,7 @@ class TRANS:
         '''
         Transform the inputs (pre-whitening step)
 
-        Inputs
-        ------
-        None
-
-        Returns
-        -------
-        theta_trans (np.ndarray) : transformed input parameters
+        :return: theta_trans (np.ndarray) : transformed input parameters
         '''
 
         # calculate the covariance of the inputs
@@ -88,13 +83,9 @@ class TRANS:
         '''
         Given a test point, we transform the test point in the appropriate basis
 
-        Inputs
-        ------
-        xtext (np.ndarray) : a vector of dimension d for the test point
+        :param: xtext (np.ndarray) : a vector of dimension d for the test point
 
-        Returns
-        -------
-        x_trans (np.ndarray) : the transformed input parameters
+        :return: x_trans (np.ndarray) : the transformed input parameters
         '''
 
         # reshape the input
@@ -113,13 +104,7 @@ class TRANS:
         otherwise the minimum is computed and the outputs are shifted by
         this amount before the logarithm transformation is applied
 
-        Inputs
-        ------
-        None
-
-        Returns
-        -------
-        y_trans (np.ndarray) : array for the transformed output
+        :return: y_trans (np.ndarray) : array for the transformed output
         '''
 
         if (self.y > 0).all():
@@ -152,13 +137,9 @@ class TRANS:
         Given a response/output which is not in the training set, this
         function will do the forward log_10 transformation.
 
-        Inputs
-        ------
-        y_original (float or np.ndarray) : original output
+        :param: y_original (float or np.ndarray) : original output
 
-        Returns
-        -------
-        y_trans_test (array) : transformed output
+        :return: y_trans_test (array) : transformed output
         '''
 
         y_trans_test = np.log10(y_original - 2 * self.y_min)
@@ -170,13 +151,9 @@ class TRANS:
         Given a response (a prediction), this function will do
         the inverse transformation (from log_10 to the original function).
 
-        Inputs
-        ------
-        y_test (float or np.ndarray) : a test (transformed) response (output)
+        :param: y_test (float or np.ndarray) : a test (transformed) response (output)
 
-        Returns
-        -------
-        y_inv (np.ndarray) : original (predicted) output
+        :return: y_inv (np.ndarray) : original (predicted) output
         '''
 
         y_inv = np.power(10, y_test) + 2.0 * self.y_min

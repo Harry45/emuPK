@@ -161,12 +161,7 @@
             
   <div class="section" id="module-transformation">
 <span id="transformation"></span><h1>transformation<a class="headerlink" href="#module-transformation" title="Permalink to this headline">¶</a></h1>
-<p>Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : <a class="reference external" href="mailto:a&#46;mootoovaloo17&#37;&#52;&#48;imperial&#46;ac&#46;uk">a<span>&#46;</span>mootoovaloo17<span>&#64;</span>imperial<span>&#46;</span>ac<span>&#46;</span>uk</a>
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Functions to transform the inputs and outputs</p>
+<p>Functions to transform the inputs and outputs</p>
 <dl class="py class">
 <dt id="transformation.TRANS">
 <em class="property">class </em><code class="sig-prename descclassname">transformation.</code><code class="sig-name descname">TRANS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS" title="Permalink to this definition">¶</a></dt>
@@ -190,13 +185,9 @@ Description : Functions to transform the inputs and outputs</p>
 <dt id="transformation.TRANS.x_transform">
 <code class="sig-name descname">x_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.x_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.x_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the inputs (pre-whitening step)</p>
-<p>None</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>theta_trans (np.ndarray)</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>transformed input parameters</p>
+<dd class="field-odd"><p>theta_trans (np.ndarray) : transformed input parameters</p>
 </dd>
 </dl>
 </dd></dl>
@@ -205,13 +196,12 @@ Description : Functions to transform the inputs and outputs</p>
 <dt id="transformation.TRANS.x_transform_test">
 <code class="sig-name descname">x_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xtest</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.x_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.x_transform_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a test point, we transform the test point in the appropriate basis</p>
-<p>xtext (np.ndarray) : a vector of dimension d for the test point</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>x_trans (np.ndarray)</strong></p>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>xtext (np.ndarray) : a vector of dimension d for the test point</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>the transformed input parameters</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>x_trans (np.ndarray) : the transformed input parameters</p>
 </dd>
 </dl>
 </dd></dl>
@@ -221,13 +211,12 @@ Description : Functions to transform the inputs and outputs</p>
 <code class="sig-name descname">y_inv_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_test</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.y_inv_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.y_inv_transform_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a response (a prediction), this function will do
 the inverse transformation (from log_10 to the original function).</p>
-<p>y_test (float or np.ndarray) : a test (transformed) response (output)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>y_inv (np.ndarray)</strong></p>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>y_test (float or np.ndarray) : a test (transformed) response (output)</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>original (predicted) output</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>y_inv (np.ndarray) : original (predicted) output</p>
 </dd>
 </dl>
 </dd></dl>
@@ -239,13 +228,9 @@ the inverse transformation (from log_10 to the original function).</p>
 <p>If all the outputs are positive, then y_min = 0,
 otherwise the minimum is computed and the outputs are shifted by
 this amount before the logarithm transformation is applied</p>
-<p>None</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>y_trans (np.ndarray)</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>array for the transformed output</p>
+<dd class="field-odd"><p>y_trans (np.ndarray) : array for the transformed output</p>
 </dd>
 </dl>
 </dd></dl>
@@ -255,13 +240,12 @@ this amount before the logarithm transformation is applied</p>
 <code class="sig-name descname">y_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_original</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.y_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.y_transform_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a response/output which is not in the training set, this
 function will do the forward log_10 transformation.</p>
-<p>y_original (float or np.ndarray) : original output</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>y_trans_test (array)</strong></p>
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>y_original (float or np.ndarray) : original output</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>transformed output</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>y_trans_test (array) : transformed output</p>
 </dd>
 </dl>
 </dd></dl>

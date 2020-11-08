@@ -148,13 +148,14 @@
            <div itemprop="articleBody">
             
   <h1>Source code for transformation</h1><div class="highlight"><pre>
-<span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Author: Arrykrishna Mootoovaloo</span>
-<span class="sd">Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
-<span class="sd">Email : a.mootoovaloo17@imperial.ac.uk</span>
-<span class="sd">Affiliation : Imperial Centre for Inference and Cosmology</span>
-<span class="sd">Status : Under Development</span>
-<span class="sd">Description : Functions to transform the inputs and outputs</span>
+<span></span><span class="c1"># Author: Arrykrishna Mootoovaloo</span>
+<span class="c1"># Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
+<span class="c1"># Email : a.mootoovaloo17@imperial.ac.uk</span>
+<span class="c1"># Affiliation : Imperial Centre for Inference and Cosmology</span>
+<span class="c1"># Status : Under Development</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Functions to transform the inputs and outputs</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -205,13 +206,7 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Transform the inputs (pre-whitening step)</span>
 
-<span class="sd">        Inputs</span>
-<span class="sd">        ------</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        theta_trans (np.ndarray) : transformed input parameters</span>
+<span class="sd">        :return: theta_trans (np.ndarray) : transformed input parameters</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="c1"># calculate the covariance of the inputs</span>
@@ -238,13 +233,9 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a test point, we transform the test point in the appropriate basis</span>
 
-<span class="sd">        Inputs</span>
-<span class="sd">        ------</span>
-<span class="sd">        xtext (np.ndarray) : a vector of dimension d for the test point</span>
+<span class="sd">        :param: xtext (np.ndarray) : a vector of dimension d for the test point</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        x_trans (np.ndarray) : the transformed input parameters</span>
+<span class="sd">        :return: x_trans (np.ndarray) : the transformed input parameters</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="c1"># reshape the input</span>
@@ -263,13 +254,7 @@
 <span class="sd">        otherwise the minimum is computed and the outputs are shifted by</span>
 <span class="sd">        this amount before the logarithm transformation is applied</span>
 
-<span class="sd">        Inputs</span>
-<span class="sd">        ------</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        y_trans (np.ndarray) : array for the transformed output</span>
+<span class="sd">        :return: y_trans (np.ndarray) : array for the transformed output</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
@@ -302,13 +287,9 @@
 <span class="sd">        Given a response/output which is not in the training set, this</span>
 <span class="sd">        function will do the forward log_10 transformation.</span>
 
-<span class="sd">        Inputs</span>
-<span class="sd">        ------</span>
-<span class="sd">        y_original (float or np.ndarray) : original output</span>
+<span class="sd">        :param: y_original (float or np.ndarray) : original output</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        y_trans_test (array) : transformed output</span>
+<span class="sd">        :return: y_trans_test (array) : transformed output</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="n">y_trans_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">y_original</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span>
@@ -320,13 +301,9 @@
 <span class="sd">        Given a response (a prediction), this function will do</span>
 <span class="sd">        the inverse transformation (from log_10 to the original function).</span>
 
-<span class="sd">        Inputs</span>
-<span class="sd">        ------</span>
-<span class="sd">        y_test (float or np.ndarray) : a test (transformed) response (output)</span>
+<span class="sd">        :param: y_test (float or np.ndarray) : a test (transformed) response (output)</span>
 
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        y_inv (np.ndarray) : original (predicted) output</span>
+<span class="sd">        :return: y_inv (np.ndarray) : original (predicted) output</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="n">y_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span>

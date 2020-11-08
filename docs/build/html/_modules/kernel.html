@@ -148,13 +148,14 @@
            <div itemprop="articleBody">
             
   <h1>Source code for kernel</h1><div class="highlight"><pre>
-<span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Author: Arrykrishna Mootoovaloo</span>
-<span class="sd">Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
-<span class="sd">Email : a.mootoovaloo17@imperial.ac.uk</span>
-<span class="sd">Affiliation : Imperial Centre for Inference and Cosmology</span>
-<span class="sd">Status : Under Development</span>
-<span class="sd">Description : Functions to calculate the kernel matrix</span>
+<span></span><span class="c1"># Author: Arrykrishna Mootoovaloo</span>
+<span class="c1"># Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
+<span class="c1"># Email : a.mootoovaloo17@imperial.ac.uk</span>
+<span class="c1"># Affiliation : Imperial Centre for Inference and Cosmology</span>
+<span class="c1"># Status : Under Development</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Functions to calculate the kernel matrix - currently support the Radial Basis Function</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -165,23 +166,19 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of the Radial Basis Function</span>
 
-<span class="sd">    Inputs</span>
-<span class="sd">    ------</span>
-<span class="sd">    x_train (np.ndarray) : a matrix of size N x d (N &gt; d)</span>
+<span class="sd">    :param: x_train (np.ndarray) : a matrix of size N x d (N &gt; d)</span>
 
-<span class="sd">    x_test (np.ndarray) : a matrix (or vector)</span>
+<span class="sd">    :param: x_test (np.ndarray) : a matrix (or vector)</span>
 
-<span class="sd">    params (np.ndarray) : kernel hyperparameters (amplitude and lengthscale)</span>
+<span class="sd">    :param: params (np.ndarray) : kernel hyperparameters (amplitude and lengthscale)</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    kernel_matrix (np.ndarray) : the kernel matrix</span>
+<span class="sd">    :return: kernel_matrix (np.ndarray) : the kernel matrix</span>
 
 <span class="sd">    If the x_test is not part of the training set, following Rasmussen et al. (2006) the following will be returned:</span>
 
-<span class="sd">    kernel_s (np.ndarray) : a vector of size N</span>
+<span class="sd">    :return: kernel_s (np.ndarray) : a vector of size N</span>
 
-<span class="sd">    kernel_ss (np.ndarray) : a scalar (1 x 1) array</span>
+<span class="sd">    :return: kernel_ss (np.ndarray) : a scalar (1 x 1) array</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># the amplitude and the lengthscales</span>
@@ -221,17 +218,13 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Calculate the pairwise Euclidean distance between two input vectors (or matrix)</span>
 
-<span class="sd">    Inputs</span>
-<span class="sd">    ------</span>
-<span class="sd">    x1 (np.ndarray) : first vector (or matrix if we have more than 1 training point)</span>
+<span class="sd">    :param: x1 (np.ndarray) : first vector (or matrix if we have more than 1 training point)</span>
 
-<span class="sd">    x2 (np.ndarray) : second vector (or matrix if we have more than 1 training point)</span>
+<span class="sd">    :param: x2 (np.ndarray) : second vector (or matrix if we have more than 1 training point)</span>
 
-<span class="sd">    scale (np.ndarray) : the characteristic lengthscales for the kernel</span>
+<span class="sd">    :param: scale (np.ndarray) : the characteristic lengthscales for the kernel</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    distance (np.ndarray) : pairwise Euclidean distance between the two vectors/matrix</span>
+<span class="sd">    :return: distance (np.ndarray) : pairwise Euclidean distance between the two vectors/matrix</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">distance</span> <span class="o">=</span> <span class="n">cdist</span><span class="p">(</span><span class="n">x1</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">x2</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;sqeuclidean&#39;</span><span class="p">)</span>

@@ -1,10 +1,11 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
+# Email : a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Functions to calculate the kernel matrix
+Functions to calculate the kernel matrix - currently support the Radial Basis Function
 '''
 
 import numpy as np
@@ -15,23 +16,19 @@ def rbf(x_train, x_test=None, params=None):
     '''
     Implementation of the Radial Basis Function
 
-    Inputs
-    ------
-    x_train (np.ndarray) : a matrix of size N x d (N > d)
+    :param: x_train (np.ndarray) : a matrix of size N x d (N > d)
 
-    x_test (np.ndarray) : a matrix (or vector)
+    :param: x_test (np.ndarray) : a matrix (or vector)
 
-    params (np.ndarray) : kernel hyperparameters (amplitude and lengthscale)
+    :param: params (np.ndarray) : kernel hyperparameters (amplitude and lengthscale)
 
-    Returns
-    -------
-    kernel_matrix (np.ndarray) : the kernel matrix
+    :return: kernel_matrix (np.ndarray) : the kernel matrix
 
     If the x_test is not part of the training set, following Rasmussen et al. (2006) the following will be returned:
 
-    kernel_s (np.ndarray) : a vector of size N
+    :return: kernel_s (np.ndarray) : a vector of size N
 
-    kernel_ss (np.ndarray) : a scalar (1 x 1) array
+    :return: kernel_ss (np.ndarray) : a scalar (1 x 1) array
     '''
 
     # the amplitude and the lengthscales
@@ -71,17 +68,13 @@ def squared_distance(x1, x2, scale):
     '''
     Calculate the pairwise Euclidean distance between two input vectors (or matrix)
 
-    Inputs
-    ------
-    x1 (np.ndarray) : first vector (or matrix if we have more than 1 training point)
+    :param: x1 (np.ndarray) : first vector (or matrix if we have more than 1 training point)
 
-    x2 (np.ndarray) : second vector (or matrix if we have more than 1 training point)
+    :param: x2 (np.ndarray) : second vector (or matrix if we have more than 1 training point)
 
-    scale (np.ndarray) : the characteristic lengthscales for the kernel
+    :param: scale (np.ndarray) : the characteristic lengthscales for the kernel
 
-    Returns
-    -------
-    distance (np.ndarray) : pairwise Euclidean distance between the two vectors/matrix
+    :return: distance (np.ndarray) : pairwise Euclidean distance between the two vectors/matrix
     '''
 
     distance = cdist(x1 / scale, x2 / scale, metric='sqeuclidean')
