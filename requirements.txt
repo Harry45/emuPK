@@ -1,6 +1,6 @@
 sphinx==3.3.0
 sphinx_rtd_theme
-numpy
+numpy==1.18.1
 scipy
 pandas
 dill==0.3.1.1
