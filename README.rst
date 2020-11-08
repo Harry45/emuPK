@@ -48,26 +48,25 @@ Directory Structure
 .. code:: bash
 
 	.
-	├── docs
-	│   ├── build
+	├── docs/
+	│   ├── build/
 	│   ├── make.bat
 	│   ├── Makefile
-	│   └── source
-	├── emulator
-	│   ├── cosmoclass
-	│   ├── gps
-	│   ├── ml
+	│   └── source/
+	├── emulator/
+	│   ├── cosmoclass/
+	│   ├── gps/
+	│   ├── ml/
 	│   ├── priors.py
-	│   ├── processing
-	│   ├── __pycache__
+	│   ├── processing/
 	│   ├── settings.py
 	│   ├── train_gps.py
 	│   ├── training_points.py
-	│   └── utils
+	│   └── utils/
 	├── LICENSE
-	├── notebooks
+	├── notebooks/
 	│   └── test_semiGP.ipynb
 	├── README.rst
 	├── requirements.txt
-	└── tests
+	└── tests/
 	    └── test.md
