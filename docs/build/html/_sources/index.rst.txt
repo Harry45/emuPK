@@ -12,9 +12,6 @@ emuPK
 
 Since Pythagoras, we know that :math:`a^2 + b^2 = c^2`.
 
-.. math:: e^{i\pi} + 1 = 0
-
-Euler's identity, equation was elected one of the most beautiful mathematical formulas.
 
 
 Citation
