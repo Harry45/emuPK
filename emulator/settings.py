@@ -1,10 +1,11 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : settings/specifications for the KiDS-450 analysis
+Settings/specifications for the 3D matter power spectrum and aligned with the KiDS-450 analysis
 '''
 
 # -----------------------------------------------------------------------------
