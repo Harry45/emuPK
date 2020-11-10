@@ -15,4 +15,4 @@ One can use the 3D matter power spectrum to calculate the EE, GI and II power sp
 
 	\mathcal{C}_{\ell,\,ij}^{\text{II}}=\int_{0}^{\chi_{H}}\text{d}\chi\,\dfrac{w_{i}(\chi)w_{j}(\chi)}{\chi^{2}}\,P_{\delta}(k,\chi)\,F^{2}(\chi)
 
-where :math:`\chi` is the comoving radial distance and :math:`n(\chi)` is the (tomographic) redshift distribution. Please see paper below for full definition of :math:`F(\chi)` and :math:`w(\chi)`.
+where :math:`\chi` is the comoving radial distance and :math:`n(\chi)` is the (tomographic) redshift distribution. Please see paper for full definition of :math:`F(\chi)` and :math:`w(\chi)`.

@@ -1,7 +1,7 @@
 Priors
 ======
 
-We can setup any prior (uniform, normal, beta and others) for the inputs to the emulator. This can be achieved by using the definitions of each probability distribution in the ``scipy.stats`` `documentation <https://docs.scipy.org/doc/scipy/reference/stats.html>`_. For example, for a specifit parameter, one just needs to specify the following:
+We can setup any prior (uniform, normal, beta and others) for the inputs to the emulator. This can be achieved by using the definitions of each probability distribution in the ``scipy.stats`` `documentation <https://docs.scipy.org/doc/scipy/reference/stats.html>`_. For example, for a specific parameter, one just needs to specify the following:
 
 .. code:: python
 
