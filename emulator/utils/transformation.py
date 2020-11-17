@@ -11,7 +11,7 @@ Functions to transform the inputs and outputs
 import numpy as np
 
 
-class TRANS:
+class transformation:
 
     '''
     Module to perform all relevant transformation, for example, pre-whitening the inputs and logarithm (supports log10 transformation) for the outputs.

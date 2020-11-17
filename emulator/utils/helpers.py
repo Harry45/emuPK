@@ -5,12 +5,30 @@
 # Status : Under Development
 
 '''
-Important functions to store/load files in a compressed format. 
+Important functions to store/load files in a compressed format.
 '''
 
 import os
 import numpy as np
 import dill
+
+
+def save_excel(df, folder_name, file_name):
+    '''
+    Given a folder name and file name, we will save a pandas dataframe to a excel file.
+
+    :param: df (pd.DataFrame) - pandas dataframe
+
+    :param: folder name (str) - name of the folder
+
+    :param: file name (str) - name of the file output
+    '''
+
+    # create the folder if it does not exist
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+
+    df.to_excel(excel_writer=folder_name + '/' + file_name + '.xlsx')
 
 
 def load_arrays(folder_name, file_name):

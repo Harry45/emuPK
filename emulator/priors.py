@@ -1,5 +1,5 @@
 '''
-Module for important calculations involving the prior. For example, 
+Module for important calculations involving the prior. For example,
 
 - when scaling the Latin Hypercube samples to the appropriate prior range
 
@@ -14,7 +14,7 @@ def entity(dictionary):
     Generates the entity of each parameter by using scipy.stats function.
 
     :param: dictionary (dict) - a dictionary containing information for each parameter, that is,
-            
+
             - distribution, specificied by the key 'distribution'
 
             - parameter name, specified by the key 'parameter'
@@ -65,7 +65,7 @@ def all_entities(list_params):
 def log_prod_pdf(params_desc, parameters):
     '''
     Calculate the log-product for a set of parameters given the priors
-    
+
     :param: params_desc (list) - list containing dictionaries of parameters. Each dictionary contains the parameter's name and its distribution.
 
     :param: parameters (np.ndarray) - an array of parameters

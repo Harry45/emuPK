@@ -15,9 +15,10 @@ import numpy as np
 import scipy.optimize as op
 import scipy.linalg as sl
 from GPy.util import linalg as gpl
-from emulator.utils.kernel import rbf, squared_distance
-from emulator.utils.algebra import solve, matrix_inverse, diagonal
-from emulator.utils.transformation import transformation
+
+from utils.kernel import rbf, squared_distance
+from utils.algebra import solve, matrix_inverse, diagonal
+from utils.transformation import transformation
 
 
 class GP:
@@ -40,7 +41,7 @@ class GP:
     use_mean (bool) : if True, the outputs are centred on zero
     '''
 
-    def __init__(self, theta, y, var=1E-5, order = 2, x_trans=False, y_trans=False, jitter=1E-10, use_mean=False):
+    def __init__(self, theta, y, var=1E-5, order=2, x_trans=False, y_trans=False, jitter=1E-10, use_mean=False):
 
         # compute mean of training set
         self.mean_theta = np.mean(theta, axis=0)
@@ -86,7 +87,7 @@ class GP:
         # we support only second order here
         self.order = order
         if self.order > 2:
-            msg =  'At the moment, we support only order = 1 and order = 2'
+            msg = 'At the moment, we support only order = 1 and order = 2'
             raise RuntimeError(msg)
 
     def do_transformation(self):
@@ -413,7 +414,7 @@ class GP:
 
         for i in range(n_restart):
 
-            print('Performing Optimization step {}'.format(i + 1))
+            # print('Performing Optimization step {}'.format(i + 1))
 
             # take a guess between the bounds provided
             guess = np.random.uniform(bounds_[:, 0], bounds_[:, 1])
@@ -436,12 +437,12 @@ class GP:
             self.min_chi_sqr = np.delete(self.min_chi_sqr, index)
             self.record_params = np.delete(self.record_params, index, axis=0)
 
-        print('{}'.format(self.min_chi_sqr))
+        # print('{}'.format(self.min_chi_sqr))
 
         opt_params = self.record_params[self.min_chi_sqr == np.min(self.min_chi_sqr)][0]
         opt_params = opt_params.flatten()
 
-        print('{}'.format(opt_params))
+        # print('{}'.format(opt_params))
 
         self.opt_params = opt_params
 
@@ -653,3 +654,6 @@ class GP:
                 return grad
             else:
                 return grad, gradient_sec
+
+    def delete_kernel(self):
+        del self.chol_stored

@@ -167,7 +167,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="TRANS"><a class="viewcode-back" href="../transformation.html#transformation.TRANS">[docs]</a><span class="k">class</span> <span class="nc">TRANS</span><span class="p">:</span>
+<div class="viewcode-block" id="transformation"><a class="viewcode-back" href="../transformation.html#transformation.transformation">[docs]</a><span class="k">class</span> <span class="nc">transformation</span><span class="p">:</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Module to perform all relevant transformation, for example, pre-whitening the inputs and logarithm (supports log10 transformation) for the outputs.</span>
@@ -208,7 +208,7 @@
         <span class="c1"># store the transformed output</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_trans</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="TRANS.x_transform"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.x_transform">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.x_transform"><a class="viewcode-back" href="../transformation.html#transformation.transformation.x_transform">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Transform the inputs (pre-whitening step)</span>
 
@@ -235,7 +235,7 @@
 
         <span class="k">return</span> <span class="n">theta_trans</span></div>
 
-<div class="viewcode-block" id="TRANS.x_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.x_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xtest</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.x_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.transformation.x_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xtest</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a test point, we transform the test point in the appropriate basis</span>
 
@@ -252,7 +252,7 @@
 
         <span class="k">return</span> <span class="n">x_trans</span></div>
 
-<div class="viewcode-block" id="TRANS.y_transform"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.y_transform">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.y_transform"><a class="viewcode-back" href="../transformation.html#transformation.transformation.y_transform">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Transform the output (depends on whether we want this criterion)</span>
 
@@ -288,7 +288,7 @@
 
             <span class="k">return</span> <span class="n">y_trans</span></div>
 
-<div class="viewcode-block" id="TRANS.y_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.y_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_original</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.y_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.transformation.y_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_original</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a response/output which is not in the training set, this</span>
 <span class="sd">        function will do the forward log_10 transformation.</span>
@@ -302,7 +302,7 @@
 
         <span class="k">return</span> <span class="n">y_trans_test</span></div>
 
-<div class="viewcode-block" id="TRANS.y_inv_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.TRANS.y_inv_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_inv_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.y_inv_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.transformation.y_inv_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_inv_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a response (a prediction), this function will do</span>
 <span class="sd">        the inverse transformation (from log_10 to the original function).</span>

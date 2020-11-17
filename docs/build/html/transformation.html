@@ -169,8 +169,8 @@
 <span id="transformation"></span><h1>Transformation<a class="headerlink" href="#module-transformation" title="Permalink to this headline">¶</a></h1>
 <p>Functions to transform the inputs and outputs</p>
 <dl class="py class">
-<dt id="transformation.TRANS">
-<em class="property">class </em><code class="sig-prename descclassname">transformation.</code><code class="sig-name descname">TRANS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS" title="Permalink to this definition">¶</a></dt>
+<dt id="transformation.transformation">
+<em class="property">class </em><code class="sig-prename descclassname">transformation.</code><code class="sig-name descname">transformation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">theta</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#transformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.transformation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Module to perform all relevant transformation, for example, pre-whitening the inputs and logarithm (supports log10 transformation) for the outputs.</p>
 <dl class="field-list simple">
@@ -188,8 +188,8 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt id="transformation.TRANS.x_transform">
-<code class="sig-name descname">x_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.x_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.x_transform" title="Permalink to this definition">¶</a></dt>
+<dt id="transformation.transformation.x_transform">
+<code class="sig-name descname">x_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#transformation.x_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.transformation.x_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the inputs (pre-whitening step)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -199,8 +199,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="transformation.TRANS.x_transform_test">
-<code class="sig-name descname">x_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xtest</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.x_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.x_transform_test" title="Permalink to this definition">¶</a></dt>
+<dt id="transformation.transformation.x_transform_test">
+<code class="sig-name descname">x_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xtest</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#transformation.x_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.transformation.x_transform_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a test point, we transform the test point in the appropriate basis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param</dt>
@@ -213,8 +213,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="transformation.TRANS.y_inv_transform_test">
-<code class="sig-name descname">y_inv_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_test</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.y_inv_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.y_inv_transform_test" title="Permalink to this definition">¶</a></dt>
+<dt id="transformation.transformation.y_inv_transform_test">
+<code class="sig-name descname">y_inv_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_test</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#transformation.y_inv_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.transformation.y_inv_transform_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a response (a prediction), this function will do
 the inverse transformation (from log_10 to the original function).</p>
 <dl class="field-list simple">
@@ -228,8 +228,8 @@ the inverse transformation (from log_10 to the original function).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="transformation.TRANS.y_transform">
-<code class="sig-name descname">y_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.y_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.y_transform" title="Permalink to this definition">¶</a></dt>
+<dt id="transformation.transformation.y_transform">
+<code class="sig-name descname">y_transform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#transformation.y_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.transformation.y_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform the output (depends on whether we want this criterion)</p>
 <p>If all the outputs are positive, then y_min = 0,
 otherwise the minimum is computed and the outputs are shifted by
@@ -242,8 +242,8 @@ this amount before the logarithm transformation is applied</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="transformation.TRANS.y_transform_test">
-<code class="sig-name descname">y_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_original</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#TRANS.y_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.TRANS.y_transform_test" title="Permalink to this definition">¶</a></dt>
+<dt id="transformation.transformation.y_transform_test">
+<code class="sig-name descname">y_transform_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y_original</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transformation.html#transformation.y_transform_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformation.transformation.y_transform_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a response/output which is not in the training set, this
 function will do the forward log_10 transformation.</p>
 <dl class="field-list simple">
