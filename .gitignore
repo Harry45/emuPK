@@ -1,0 +1,8 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Large GP files
+gps/
+
+# Local tests
+tests/

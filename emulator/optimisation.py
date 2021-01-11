@@ -72,7 +72,7 @@ def maximise(x_train=None, y_train=None):
 
     # Input regression prior
     # (default: 0 mean and unit variance: inputs -> mean = None, cov = None, Lambda = 1)
-    mean_ = np.zeros(phi_gp.shape[1])
+    mean_ = np.zeros(phi_gp.shape[1])  # post_beta.flatten()
     cov_ = np.identity(phi_gp.shape[1])
     gp_module.regression_prior(mean=mean_, cov=cov_, lambda_cap=st.lambda_cap)
 
@@ -85,12 +85,14 @@ def maximise(x_train=None, y_train=None):
     # amplitude of the residuals
     res = np.atleast_2d(y_train).T - np.dot(glm_module.phi, post_beta)
     res = res.flatten()
-    amp = 2 * np.log(np.std(res))
+    std = np.std(res) + 1E-300
+    amp = 2 * np.log(std)
 
     # we set a different bound for the amplitude
     # but one could use the answer from the Gaussian Linear Model
     # to propose an informative bound
     bnd[0] = np.array([st.a_min, st.a_max])
+    # bnd[0] = np.array([amp - 1, amp + 1])
 
     # run optimisation
     gp_module.fit(
@@ -105,4 +107,3 @@ def maximise(x_train=None, y_train=None):
         gp_module.delete_kernel()
 
     return gp_module
-

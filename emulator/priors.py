@@ -35,7 +35,8 @@ def all_entities(list_params):
     '''
     Generate all the priors once we have specified them.
 
-    :param: list_params (list) - a list containing the description for each parameter and each description (dictionary) contains the following information:
+    :param: list_params (list) - a list containing the description for each parameter
+    and each description (dictionary) contains the following information:
 
             - distribution, specificied by the key 'distribution'
 
@@ -43,7 +44,8 @@ def all_entities(list_params):
 
             - specifications, specified by the key 'specs'
 
-    :return: record (list) - a list containing the prior for each parameter, that is, each element contains the following information:
+    :return: record (list) - a list containing the prior for each parameter, that is,
+    each element contains the following information:
 
             - parameter name, specifiied by the key 'parameter'
 
@@ -66,7 +68,8 @@ def log_prod_pdf(params_desc, parameters):
     '''
     Calculate the log-product for a set of parameters given the priors
 
-    :param: params_desc (list) - list containing dictionaries of parameters. Each dictionary contains the parameter's name and its distribution.
+    :param: params_desc (list) - list containing dictionaries of parameters. Each dictionary contains the parameter's
+    name and its distribution.
 
     :param: parameters (np.ndarray) - an array of parameters
 

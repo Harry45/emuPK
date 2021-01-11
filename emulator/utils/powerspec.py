@@ -12,7 +12,7 @@ import numpy as np
 import scipy.interpolate as itp
 
 
-def kz_interpolate(inputs: list, grid: list)-> np.ndarray:
+def kz_interpolate(inputs: list, grid: list) -> np.ndarray:
     '''
     Function to perform 2D interpolation using interpolate.interp2d
 
@@ -27,15 +27,24 @@ def kz_interpolate(inputs: list, grid: list)-> np.ndarray:
     :return: pred_new (np.ndarray) : the predicted values on the 2D grid
     '''
 
-    f = itp.interp2d(*inputs)
+    # transform in inputs to log
+    k, z, f_kz, int_type = np.log(inputs[0]), inputs[1], np.log(inputs[2]), inputs[3]
 
-    pred_new = f(*grid)
+    inputs_trans = [k, z, f_kz, int_type]
+
+    # tranform the grid to log
+    knew, znew = np.log(grid[0]), grid[1]
+
+    grid_trans = [knew, znew]
+
+    f = itp.interp2d(*inputs_trans)
+
+    pred_new = np.exp(f(*grid_trans))
 
     return pred_new
 
 
-
-def ps_interpolate(inputs: list)->np.ndarray:
+def ps_interpolate(inputs: list) -> np.ndarray:
     '''
     Function to interpolate the power spectrum along the redshift axis
 
@@ -44,16 +53,16 @@ def ps_interpolate(inputs: list)->np.ndarray:
     :return: ynew (np.ndarray) : an array of the interpolated power spectra
     '''
 
-    x, y, xnew = inputs[0], inputs[1], inputs[2]
+    x, y, xnew = np.log(inputs[0]), np.log(inputs[1]), np.log(inputs[2])
 
     spline = itp.splrep(x, y)
 
-    ynew = itp.splev(xnew, spline)
+    ynew = np.exp(itp.splev(xnew, spline))
 
     return ynew
 
 
-def prediction(input_pred: list)->float:
+def prediction(input_pred: list) -> float:
     '''
     For each GP we have to calculate the mean prediction
 
@@ -68,7 +77,8 @@ def prediction(input_pred: list)->float:
 
     return mean_pred[0]
 
-def gradient(input_pred: list)->float:
+
+def gradient(input_pred: list) -> float:
     '''
     For each GP we have to calculate the mean prediction
 

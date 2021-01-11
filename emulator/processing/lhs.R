@@ -16,7 +16,7 @@ library(lhs)
 n = 1000
 
 # number of dimensions
-d = 7
+d = 6
 
 # type of design we want to generate
 X = maximinLHS(n, d)
@@ -24,5 +24,5 @@ X = maximinLHS(n, d)
 # X = randomLHS(n, d)
 
 # save file in the design folder
-write.csv(X, 'design/maximin_1000_7D')
+write.csv(X, 'design/maximin_1000_6D')
 

@@ -48,4 +48,4 @@ def scale_points(lhs_points, save=True):
 
 if __name__ == "__main__":
 
-    X_prime = scale_points('maximin_1000_7D', save=True)
+    X_prime = scale_points('maximin_1000_6D', save=True)

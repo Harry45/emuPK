@@ -7,6 +7,21 @@ include_feedback = True
 # mode for calculating the power spectrum+
 mode = 'halofit'
 
+# settings for halofit
+
+# halofit needs to evalute integrals (linear power spectrum times some
+# kernels). They are sampled using this logarithmic step size
+
+halofit_k_per_decade = 3000.  # default in CLASS is 80
+
+# a smaller value will lead to a more precise halofit result at the
+# *highest* redshift at which halofit can make computations,at the expense
+# of requiring a larger k_max; but this parameter is not relevant for the
+# precision on P_nl(k,z) at other redshifts, so there is normally no need
+# to change it
+
+halofit_sigma_precision = 0.05  # default in CLASS is 0.05
+
 # baryon model to be used
 baryon_model = 'AGN'
 
@@ -14,7 +29,7 @@ baryon_model = 'AGN'
 zmax = 4.66
 
 # maximum of k
-k_max_h_by_Mpc = 50.
+k_max_h_by_Mpc = 5.
 
 # minimum of k
 k_min_h_by_Mpc = 5E-4
@@ -37,6 +52,9 @@ ell_min = 10
 # ell_max
 ell_max = 4001
 
+# choose whether we want CLASS to calculate the growth function
+gf_class = False
+
 # -----------------------------------------------------------------------------
 
 # Priors
@@ -47,16 +65,17 @@ ell_max = 4001
 # it is specified by loc and loc + scale, where scale=4.0
 # distribution = scipy.stats.uniform(1.0, 4.0)
 
-# First seven parameters are for the emulator
+# First six parameters are for the emulator
 p1 = {'distribution': 'uniform', 'parameter': 'omega_cdm', 'specs': [0.01, 0.39]}
 p2 = {'distribution': 'uniform', 'parameter': 'omega_b', 'specs': [0.019, 0.007]}
 p3 = {'distribution': 'uniform', 'parameter': 'ln10^{10}A_s', 'specs': [1.70, 3.30]}
 p4 = {'distribution': 'uniform', 'parameter': 'n_s', 'specs': [0.70, 0.60]}
 p5 = {'distribution': 'uniform', 'parameter': 'h', 'specs': [0.64, 0.18]}
 p6 = {'distribution': 'uniform', 'parameter': 'sum_neutrino', 'specs': [0.06, 0.94]}
+
 p7 = {'distribution': 'uniform', 'parameter': 'A_bary', 'specs': [0.0, 2.0]}
 
-emu_params = [p1, p2, p3, p4, p5, p6, p7]
+emu_params = [p1, p2, p3, p4, p5, p6]
 
 # -----------------------------------------------------------------------------
 # Baryon Feedback settings
@@ -116,15 +135,20 @@ a_max = 25.0
 method = 'L-BFGS-B'
 
 # tolerance to stop the optimizer
-ftol = 1E-20
+ftol = 1E-30
 
 # maximum number of iterations
-maxiter = 500
+maxiter = 600
 
 # decide whether we want to delete the kernel or not
 del_kernel = True
 
 # -----------------------------------------------------------------------------
+
+# k1 = np.logspace(np.log10(5E-4), np.log10(0.01), 10)
+# k2 = np.logspace(np.log10(0.011), np.log10(0.5), 20)
+# k3 = np.logspace(np.log10(1.0), np.log10(50), 10)
+# np.concatenate((k1, k2, k3))
 
 # some tests for spectrum routine
 
@@ -149,4 +173,3 @@ del_kernel = True
 #     point = np.array([0.1295, 0.0224, 2.895, 0.9948, 0.7411, 0.5692, 1.0078])
 #     print(gp.pred_original_function(point))
 #     print(gp.derivatives(point, order=2))
-

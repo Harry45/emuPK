@@ -35,7 +35,6 @@ def dictionary_params(par: np.ndarray):
     3: n_s
     4: h
     5: sum_neutrino
-    6: A_bary
 
     :param: par (np.ndarray): parameters for the inference
 
@@ -54,6 +53,4 @@ def dictionary_params(par: np.ndarray):
 
     neutrino = {'m_ncdm': par[5] / other['deg_ncdm']}
 
-    nuisance = {'A_bary': par[6]}
-
-    return cosmo, other, neutrino, nuisance
+    return cosmo, other, neutrino

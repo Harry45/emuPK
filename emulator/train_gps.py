@@ -9,48 +9,38 @@ Description : Routine to train all GPs in parallel for each specific type of pow
 '''
 
 import os
-import glob
 import multiprocessing as mp
-import numpy as np
-import pandas as pd
 
 # our scripts
 import utils.helpers as hp
 import optimisation as op
+import setemu as st
 
 
-def training(inputs, file_name):
+def training(inputs, folder_name, file_name):
     '''
     Function to train GPs
 
     :param: inputs (np.ndarray) : array of size N_train x N_dim for the inputs to the GP
 
-    :param: file_name (str) : name of the GP output, for example, pk_0
+    :param: folder_name (str) : name of the folder where the outputs are stored, for example, out_g
+
+    :param: file_name (str) : name of the GP output, for example, g_0
     '''
 
     print('Optimising GP for : {}'.format(file_name))
 
-    outputs = hp.load_arrays('processing/trainingpoints/processed_pk', file_name)
+    outputs = hp.load_arrays('processing/trainingpoints/' + folder_name, file_name)
 
     try:
         # train the GP
         gp_model = op.maximise(x_train=inputs, y_train=outputs)
 
         # store the GP in the specific folder
-        hp.store_pkl_file(gp_model, 'gps', 'gp_' + file_name)
-
-        # extract the marginal likelihood
-        evidence = np.around(gp_model.min_chi_sqr, 0)
-
-        # extract the kernel hyperparameters
-        params = np.around(gp_model.opt_params, 3)
-
-        with open('information/optimum.txt', 'a') as file:
-            file.write('{0}\t{1}\t{2}\n'.format(file_name[3:], evidence, params))
+        hp.store_pkl_file(gp_model, 'gps/' + folder_name, 'gp_' + file_name)
 
     except BaseException:
-        with open('information/debug.txt', 'a') as file:
-            file.write('{0}\n'.format(file_name))
+        pass
 
 
 def worker(args):
@@ -62,61 +52,47 @@ def worker(args):
     training(*args)
 
 
-def final_sort(file_name='information/optimum.txt', save=True):
-    '''
-    When we train the GPs in parallel, they might be returned in the incorrect order. This function just sorts the file describing the marginal likelihood of the GPs in ascending order.
-
-    :param: file_name (str) : name of the file (default: 'information/optimum.txt')
-
-    :param: save (bool) if True, the sorted file will be saved under the name sorted_file.txt in the information folder
-
-    :return: sorted_file (pd.DataFrame) : the sorted file
-    '''
-    sorted_file = pd.read_csv(file_name, sep='\t')
-
-    sorted_file = sorted_file.sort_values(by='pk')
-
-    if save:
-        sorted_file.to_csv('information/sorted_file.txt', index=False, sep='\t')
-
-    return sorted_file
-
-
 def main():
 
     # the inputs are fixed
     inputs = hp.load_arrays('processing/trainingpoints', 'scaled_inputs')
 
     # number of gps
-    ngps = len(os.listdir('processing/trainingpoints/processed_pk/'))
+    if st.gf_class:
+        n_g = len(os.listdir('processing/trainingpoints/out_class_g/'))
+        n_l = len(os.listdir('processing/trainingpoints/out_class_l/'))
+        n_q = len(os.listdir('processing/trainingpoints/out_class_q/'))
 
-    try:
+        args_g = [[inputs, 'out_class_g', 'g_' + str(i)] for i in range(n_g)]
+        args_l = [[inputs, 'out_class_l', 'l_' + str(i)] for i in range(n_l)]
+        args_q = [[inputs, 'out_class_q', 'q_' + str(i)] for i in range(n_q)]
 
-        # create the folder (to store information about GPs and training)
-        if not os.path.exists('information'):
-            os.makedirs('information')
+    else:
+        n_g = len(os.listdir('processing/trainingpoints/out_g/'))
+        n_l = len(os.listdir('processing/trainingpoints/out_l/'))
+        n_q = len(os.listdir('processing/trainingpoints/out_q/'))
 
-        # if folder exists and there are previous files, remove them
-        for filename in glob.glob("information/*.txt"):
-            os.remove(filename)
-
-        with open('information/optimum.txt', 'a') as file:
-            file.write('{0}\t{1}\t{2}\n'.format('pk', 'evidence', 'params'))
-
-    except BaseException:
-        pass
-
-    # make a list of arguments to pass to parallel processors
-    arguments = [[inputs, 'pk_' + str(i)] for i in range(ngps)]
+        args_g = [[inputs, 'out_g', 'g_' + str(i)] for i in range(n_g)]
+        args_l = [[inputs, 'out_l', 'l_' + str(i)] for i in range(n_l)]
+        args_q = [[inputs, 'out_q', 'q_' + str(i)] for i in range(n_q)]
 
     # train GPs in parallel
     ncpu = mp.cpu_count()
+
+    # for the growth function
+    # pool = mp.Pool(processes=ncpu)
+    # pool.map(worker, args_g)
+    # pool.close()
+
+    # for the linear matter power spectrum
     pool = mp.Pool(processes=ncpu)
-    pool.map(worker, arguments)
+    pool.map(worker, args_l)
     pool.close()
 
-    # sort file file and overwrite it
-    final_sort('information/optimum.txt', save=True)
+    # for the q non linear function
+    pool = mp.Pool(processes=ncpu)
+    pool.map(worker, args_q)
+    pool.close()
 
 
 # Standard boilerplate to call the main() function to begin the program.

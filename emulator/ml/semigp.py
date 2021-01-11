@@ -437,7 +437,7 @@ class GP:
             self.min_chi_sqr = np.delete(self.min_chi_sqr, index)
             self.record_params = np.delete(self.record_params, index, axis=0)
 
-        # print('{}'.format(self.min_chi_sqr))
+        print('{}'.format(self.min_chi_sqr))
 
         opt_params = self.record_params[self.min_chi_sqr == np.min(self.min_chi_sqr)][0]
         opt_params = opt_params.flatten()
