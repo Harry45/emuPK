@@ -4,8 +4,9 @@
 
 include_feedback = True
 
-# mode for calculating the power spectrum+
-mode = 'halofit'
+# mode for calculating the power spectrum
+# 'halofit' or 'hmcode'
+mode = 'hmcode'
 
 # settings for halofit
 

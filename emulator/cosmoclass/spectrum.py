@@ -52,7 +52,8 @@ class matterspectrum(object):
             self.class_args = {'z_max_pk': self.zmax,
                                'output': 'mPk',
                                'non linear': st.mode,
-                               'P_k_max_h/Mpc': st.k_max_h_by_Mpc}
+                               'P_k_max_h/Mpc': st.k_max_h_by_Mpc,
+                               'eta_0':0}
 
         # redshift range
         self.redshifts = np.linspace(0.0, self.zmax, st.nz, endpoint=True)

@@ -48,25 +48,32 @@ Directory Structure
 .. code:: bash
 
 	.
-	├── docs/
-	│   ├── build/
+	├── docs
+	│   ├── build
 	│   ├── make.bat
 	│   ├── Makefile
-	│   └── source/
-	├── emulator/
-	│   ├── cosmoclass/
-	│   ├── gps/
-	│   ├── ml/
+	│   └── source
+	├── emulator
+	│   ├── class_settings.ipynb
+	│   ├── cosmoclass
+	│   ├── cosmogp.py
+	│   ├── gp_moped.py
+	│   ├── gps
+	│   ├── ml
+	│   ├── optimisation.py
 	│   ├── priors.py
-	│   ├── processing/
-	│   ├── settings.py
+	│   ├── processing
+	│   ├── process_outputs.py
+	│   ├── scale_inputs.py
+	│   ├── setemu.py
+	│   ├── testing.ipynb
+	│   ├── test_ps.py
+	│   ├── tests
 	│   ├── train_gps.py
 	│   ├── training_points.py
-	│   └── utils/
+	│   └── utils
 	├── LICENSE
-	├── notebooks/
-	│   └── test_semiGP.ipynb
 	├── README.rst
 	├── requirements.txt
-	└── tests/
-	    └── test.md
+	├── testing.txt
+	└── test_semigp.ipynb
