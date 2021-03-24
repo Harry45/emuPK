@@ -1,0 +1,11 @@
+pknl_components:
+- emulating q(k,z)
+- gf: y_trans = False
+- qf: y_trans = False
+- pl: y_trans = True
+
+pknl_components_op:
+- emulating 1 + q(k,z)
+- gf: y_trans = False
+- qf: y_trans = True
+- pl: y_trans = True

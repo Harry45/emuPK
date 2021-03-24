@@ -128,4 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
+# our folders to ignore
+predictions/
+tests/
