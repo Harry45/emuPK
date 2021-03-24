@@ -128,7 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# heavy (local) foles
-tests/
 
-gps/
