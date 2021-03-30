@@ -50,30 +50,29 @@ Directory Structure
 	.
 	├── docs
 	│   ├── build
+	│   ├── logs
 	│   ├── make.bat
 	│   ├── Makefile
 	│   └── source
 	├── emulator
-	│   ├── class_settings.ipynb
-	│   ├── cosmoclass
-	│   ├── cosmogp.py
-	│   ├── gp_moped.py
-	│   ├── gps
+	│   ├── cosmology
+	│   ├── lhs
+	│   ├── lhs.R
+	│   ├── logs
 	│   ├── ml
-	│   ├── optimisation.py
+	│   ├── playground.ipynb
+	│   ├── plots
+	│   ├── predictions
+	│   ├── predictions.py
 	│   ├── priors.py
-	│   ├── processing
-	│   ├── process_outputs.py
-	│   ├── scale_inputs.py
-	│   ├── setemu.py
-	│   ├── testing.ipynb
-	│   ├── test_ps.py
+	│   ├── semigps
+	│   ├── settings.py
 	│   ├── tests
-	│   ├── train_gps.py
-	│   ├── training_points.py
+	│   ├── trainingpoints.py
+	│   ├── training.py
+	│   ├── trainingset
 	│   └── utils
 	├── LICENSE
 	├── README.rst
-	├── requirements.txt
-	├── testing.txt
-	└── test_semigp.ipynb
+	└── requirements.txt
+
