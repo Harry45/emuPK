@@ -58,7 +58,6 @@ Directory Structure
 	│   ├── cosmology
 	│   ├── lhs
 	│   ├── lhs.R
-	│   ├── logs
 	│   ├── ml
 	│   ├── playground.ipynb
 	│   ├── plots
@@ -67,7 +66,6 @@ Directory Structure
 	│   ├── priors.py
 	│   ├── semigps
 	│   ├── settings.py
-	│   ├── tests
 	│   ├── trainingpoints.py
 	│   ├── training.py
 	│   ├── trainingset
