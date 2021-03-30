@@ -81,15 +81,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Usage</span></p>
+              <p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html#example">Example</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Main</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../priors.html">Priors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/modules.html">Emulator Build-Up</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cosmology/modules.html">3D Matter Power Spectrum</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ml/modules.html">Gaussian Process</a></li>
 </ul>
 
             
@@ -155,8 +162,8 @@
             
   <h1>Source code for transformation</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Author: Arrykrishna Mootoovaloo</span>
-<span class="c1"># Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
-<span class="c1"># Email : a.mootoovaloo17@imperial.ac.uk</span>
+<span class="c1"># Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq</span>
+<span class="c1"># Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk</span>
 <span class="c1"># Affiliation : Imperial Centre for Inference and Cosmology</span>
 <span class="c1"># Status : Under Development</span>
 
@@ -167,22 +174,23 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="transformation"><a class="viewcode-back" href="../transformation.html#transformation.transformation">[docs]</a><span class="k">class</span> <span class="nc">transformation</span><span class="p">:</span>
+<div class="viewcode-block" id="transformation"><a class="viewcode-back" href="../ml/transformation.html#transformation.transformation">[docs]</a><span class="k">class</span> <span class="nc">transformation</span><span class="p">:</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Module to perform all relevant transformation, for example, pre-whitening the inputs and logarithm (supports log10 transformation) for the outputs.</span>
-
-<span class="sd">    :param: theta (np.ndarray) : matrix of size N x d</span>
-
-<span class="sd">    :param: y (np.ndarray) : a vector of the output</span>
-
-<span class="sd">    :param: N is the number of training points</span>
-
-<span class="sd">    :param: d is the dimensionality of the problem</span>
+<span class="sd">    Module to perform all relevant transformation, for example, pre-whitening the inputs and</span>
+<span class="sd">    logarithm (supports log10 transformation) for the outputs.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :param: theta (np.ndarray) : matrix of size N x d</span>
 
+<span class="sd">        :param: y (np.ndarray) : a vector of the output</span>
+
+<span class="sd">        :param: N is the number of training points</span>
+
+<span class="sd">        :param: d is the dimensionality of the problem</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="c1"># input</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
 
@@ -199,16 +207,7 @@
         <span class="c1"># y is a vector of size N</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="c1"># the transformation matrix</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mu_matrix</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="c1"># the transformed input parameters</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">theta_trans</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="c1"># store the transformed output</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y_trans</span> <span class="o">=</span> <span class="kc">None</span>
-
-<div class="viewcode-block" id="transformation.x_transform"><a class="viewcode-back" href="../transformation.html#transformation.transformation.x_transform">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.x_transform"><a class="viewcode-back" href="../ml/transformation.html#transformation.transformation.x_transform">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Transform the inputs (pre-whitening step)</span>
 
@@ -235,7 +234,7 @@
 
         <span class="k">return</span> <span class="n">theta_trans</span></div>
 
-<div class="viewcode-block" id="transformation.x_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.transformation.x_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xtest</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.x_transform_test"><a class="viewcode-back" href="../ml/transformation.html#transformation.transformation.x_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">x_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xtest</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a test point, we transform the test point in the appropriate basis</span>
 
@@ -252,7 +251,7 @@
 
         <span class="k">return</span> <span class="n">x_trans</span></div>
 
-<div class="viewcode-block" id="transformation.y_transform"><a class="viewcode-back" href="../transformation.html#transformation.transformation.y_transform">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.y_transform"><a class="viewcode-back" href="../ml/transformation.html#transformation.transformation.y_transform">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Transform the output (depends on whether we want this criterion)</span>
 
@@ -288,7 +287,7 @@
 
             <span class="k">return</span> <span class="n">y_trans</span></div>
 
-<div class="viewcode-block" id="transformation.y_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.transformation.y_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_original</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.y_transform_test"><a class="viewcode-back" href="../ml/transformation.html#transformation.transformation.y_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_original</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a response/output which is not in the training set, this</span>
 <span class="sd">        function will do the forward log_10 transformation.</span>
@@ -302,7 +301,7 @@
 
         <span class="k">return</span> <span class="n">y_trans_test</span></div>
 
-<div class="viewcode-block" id="transformation.y_inv_transform_test"><a class="viewcode-back" href="../transformation.html#transformation.transformation.y_inv_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_inv_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+<div class="viewcode-block" id="transformation.y_inv_transform_test"><a class="viewcode-back" href="../ml/transformation.html#transformation.transformation.y_inv_transform_test">[docs]</a>    <span class="k">def</span> <span class="nf">y_inv_transform_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y_test</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Given a response (a prediction), this function will do</span>
 <span class="sd">        the inverse transformation (from log_10 to the original function).</span>

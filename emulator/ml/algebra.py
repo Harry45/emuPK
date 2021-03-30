@@ -1,6 +1,6 @@
 # Author: Arrykrishna Mootoovaloo
-# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-# Email : a.mootoovaloo17@imperial.ac.uk
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
 
@@ -9,11 +9,10 @@ Important linear algebra operations for Gaussian Process
 '''
 
 import numpy as np
-import scipy.linalg as sl
 from GPy.util import linalg as gpl
 
 
-def solve(matrix, b_vec, return_chol=False):
+def solve(matrix: np.ndarray, b_vec: np.ndarray, return_chol: bool = False) -> np.ndarray:
     '''
     Given a matrix and a vector, this solves for x in the following:
 
@@ -29,7 +28,7 @@ def solve(matrix, b_vec, return_chol=False):
 
     :return: dummy (np.ndarray) : 'x' in the equation above
 
-    If return_chol is True,
+    If we want the Cholesky factor:
 
     :return: chol_factor (np.ndarray) : the Cholesky factor is returned
     '''
@@ -60,7 +59,7 @@ def solve(matrix, b_vec, return_chol=False):
             return dummy
 
 
-def matrix_inverse(matrix, return_chol=False):
+def matrix_inverse(matrix: np.ndarray, return_chol: bool = False) -> np.ndarray:
     '''
     Sometimes, we would need the matrix inverse as well
 
@@ -72,7 +71,7 @@ def matrix_inverse(matrix, return_chol=False):
 
     :return: dummy (np.ndarray) : matrix inverse
 
-    If return_chol is True,
+    If we also want the Cholesky factor:
 
     :return: chol_factor (np.ndarray) : the Cholesky factor
     '''
@@ -100,13 +99,13 @@ def matrix_inverse(matrix, return_chol=False):
             return dummy
 
 
-def diagonal(matrix):
+def diagonal(matrix: np.ndarray) -> bool:
     '''
     Check if a matrix is diagonal
 
     :param: matrix (np.ndarray) : matrix of size N x N
 
-    :return: ond (bool) : if diagonal, True
+    :return: cond (bool) : if diagonal, True
     '''
 
     if np.count_nonzero(matrix - np.diag(np.diagonal(matrix))) == 0:

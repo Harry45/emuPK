@@ -1,13 +1,16 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Semi-Parametric Gaussian Process
+Learn a function by specifiying an explicit set of basis function and model the residuals by a kernel.
 '''
 
 
+from typing import Tuple
 from functools import reduce
 import numpy as np
 import scipy.optimize as op
@@ -19,27 +22,38 @@ from ml.algebra import solve, matrix_inverse
 from ml.transformation import transformation
 
 
-class GP:
-
+class GP(object):
     '''
-    Inputs
-    ------
-    theta (np.ndarray) : matrix of size ntrain x ndim
+    Module to learn a function which maps the inputs to the output. There are various important aspects
+    in having a semi-parameteric Gaussian Process model. The parameteric part here is a polynomial
+    function. Only order = 1 and order = 2 are currently supported. In addition, we also use a pre-whitening
+    step at the input level and the code also supports log_10 transformation for the targets.
 
-    y (np.ndarray) : output/target
+    :param: theta (np.ndarray) : matrix of size ntrain x ndim
 
-    var (float or np.ndarray) : noise covariance matrix of size ntrain x ntrain
+    :param: y (np.ndarray) : output/target
 
-    x_trans (bool) : if True, pre-whitening is applied
+    :param: var (float or np.ndarray) : noise covariance matrix of size ntrain x ntrain
 
-    y_trans (bool) : if True, log of output is used
+    :param: x_trans (bool) : if True, pre-whitening is applied
 
-    jitter (float) : a jitter term just to make sure all matrices are numerically stable
+    :param: y_trans (bool) : if True, log of output is used
 
-    use_mean (bool) : if True, the outputs are centred on zero
+    :param: jitter (float) : a jitter term just to make sure all matrices are numerically stable
+
+    :param: use_mean (bool) : if True, the outputs are centred on zero
     '''
 
-    def __init__(self, theta, y, var=1E-5, order=2, x_trans=False, y_trans=False, jitter=1E-10, use_mean=False):
+    def __init__(
+            self,
+            theta: np.ndarray,
+            y: np.ndarray,
+            var: float = 1E-5,
+            order: int = 2,
+            x_trans: bool = False,
+            y_trans: bool = False,
+            jitter: float = 1E-10,
+            use_mean: bool = False):
 
         # compute mean of training set
         self.mean_theta = np.mean(theta, axis=0)
@@ -78,9 +92,6 @@ class GP:
         self.x_trans = x_trans
         self.y_trans = y_trans
 
-        # store kernel hyperparameters
-        self.opt_params = None
-
         # order of the poynomial regression
         # we support only second order here
         self.order = order
@@ -88,17 +99,9 @@ class GP:
             msg = 'At the moment, we support only order = 1 and order = 2'
             raise RuntimeError(msg)
 
-    def do_transformation(self):
+    def do_transformation(self) -> None:
         '''
         Perform all transformations
-
-        Inputs
-        ------
-            None
-
-        Outputs
-        -------
-            None
         '''
 
         # we transform both x and y if specified
@@ -118,17 +121,13 @@ class GP:
             self.x_train = self.theta
             self.y_train = self.y
 
-    def compute_basis(self, test_point=None):
+    def compute_basis(self, test_point: np.ndarray = None) -> np.ndarray:
         '''
         Compute the input basis functions
 
-        Inputs
-        ------
-        test_point (np.ndarray) : if a test point is provdied, phi_star is calculated
+        :param: test_point (np.ndarray) : if a test point is provdied, phi_star is calculated
 
-        Returns
-        -------
-        phi or phi_star (np.ndarray) : the basis functions
+        :return: phi or phi_star (np.ndarray) : the basis functions
         '''
 
         # we need to make the transformation first
@@ -152,22 +151,15 @@ class GP:
 
             return phi_star
 
-    def regression_prior(self, mean=None, cov=None, lambda_cap=1):
+    def regression_prior(self, mean: np.ndarray = None, cov: np.ndarray = None, lambda_cap: float = 1) -> None:
         '''
         Specify the regression prior (mean and covariance)
 
-        Inputs
-        ------
+        :param: mean (np.ndarray) : default zeros
 
-        mean (np.ndarray) : default zeros
+        :param: cov (np.ndarray) : default identity matrix
 
-        cov (np.ndarray) : default identity matrix
-
-        lambda_cap (float) : width of the prior covariance matrix (default 1)
-
-        Returns
-        -------
-
+        :param: lambda_cap (float) : width of the prior covariance matrix (default 1)
         '''
 
         # compute the design matrix first
@@ -193,16 +185,11 @@ class GP:
             # Compute difference between the output vector and the polynomial part
             self.diff = self.y_train - np.dot(self.phi, self.mu)
 
-    def noise_covariance(self):
+    def noise_covariance(self) -> np.ndarray:
         '''
         Build the noise covariance matrix
 
-        Inputs
-        ------
-
-        Returns
-        -------
-
+        :return: the initial pre-defined noise variance (either float or matrix)
         '''
 
         if (self.var.shape[0] == self.var.shape[1] == self.ntrain):
@@ -210,17 +197,11 @@ class GP:
         else:
             return self.var * np.identity(self.ntrain)
 
-    def inv_noise_cov(self):
+    def inv_noise_cov(self) -> np.ndarray:
         '''
         Calculate the inverse of the noise covariance matrix
 
-        Inputs
-        ------
-
-        Returns
-        -------
-        mat_inv (np.ndarray) : inverse of the noise covariance
-
+        :param: mat_inv (np.ndarray) : inverse of the noise covariance
         '''
 
         # Compute noise covariance first
@@ -231,16 +212,11 @@ class GP:
 
         return mat_inv
 
-    def inv_prior_cov(self):
+    def inv_prior_cov(self) -> np.ndarray:
         '''
         Calculate the inverse of the prior covariance matrix
 
-        Inputs
-        ------
-
-        Returns
-        -------
-        mat_inv (np.ndarray) : inverse of the prior covariance matrix (parametric part)
+        :return: mat_inv (np.ndarray) : inverse of the prior covariance matrix (parametric part)
         '''
 
         if not hasattr(self, 'cov'):
@@ -253,20 +229,19 @@ class GP:
 
             return mat_inv
 
-    def posterior(self):
+    def posterior(self) -> Tuple[np.ndarray, np.ndarray]:
         '''
         Computes the posterior distribution of beta and f (latent variables)
 
         Note: Optimise for the kernel parameters first
 
-        Inputs
-        ------
+        :param: post_mean (np.ndarray) : mean posterior
 
-        Returns
-        -------
-        post_mean (np.ndarray) : mean posterior
+        :param: a_inv_matrix (np.ndarray) : covariance of all latent parameters
 
-        a_inv_matrix (np.ndarray) : covariance of all latent parameters
+        :return: post_mean (np.ndarray) : mean of the regression coefficient and the residuals
+
+        :return: a_inv_matrix (np.ndarray) : the full covariance matrix of teh estimated parameters
         '''
 
         # Compute the noise_ccovariance matrix
@@ -297,19 +272,15 @@ class GP:
 
         return post_mean, a_inv_matrix
 
-    def evidence(self, params):
+    def evidence(self, params: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         '''
         Calculate the log-evidence of the GP
 
-        Inputs
-        ------
-        params (np.ndarray) : kernel hyperparameters
+        :param: params (np.ndarray) : kernel hyperparameters
 
-        Outputs
-        -------
-        neg_log_evidence (np.ndarray) : the negative log-marginal likelihood
+        :return: neg_log_evidence (np.ndarray) : the negative log-marginal likelihood
 
-        -gradient (np.ndarray) : the gradient with respect to the kernel hyperparameters
+        :return: -gradient (np.ndarray) : the gradient with respect to the kernel hyperparameters
         '''
 
         # sometimes the optimizer prefers a 1D array!
@@ -367,21 +338,27 @@ class GP:
 
         return neg_log_evidence, -gradient
 
-    def fit(self, method='CG', bounds=None, options={'ftol': 1E-5}, n_restart=2):
+    def fit(
+            self,
+            method: str = 'CG',
+            bounds: np.ndarray = None,
+            options: dict = {
+                'ftol': 1E-5},
+            n_restart: int = 2) -> np.ndarray:
         '''
         The kernel hyperparameters are learnt in this function.
 
-        Inputs
-        ------
-        method (str) : the choice of the optimizer:
+        :param: method (str) : the choice of the optimizer:
 
-            https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize
+            https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
 
             Recommend L-BFGS-B algorithm
 
-        bounds (np.ndarray) : the prior on these hyperparameters
+        :param: bounds (np.ndarray) : the prior on these hyperparameters
 
-        options (dictionary) : options for the L-BFGS-B optimizer. We have:
+        :param: options (dictionary) : options for the L-BFGS-B optimizer. We have:
+
+        .. code-block:: python
 
             options={'disp': None,
                     'maxcor': 10,
@@ -394,11 +371,9 @@ class GP:
                     'maxls': 20,
                     'finite_diff_rel_step': None}
 
-        n_restart (int) : number of times we want to restart the optimizer
+        :param: n_restart (int) : number of times we want to restart the optimizer
 
-        Returns
-        -------
-        opt_params (np.ndarray) : array of the optimised kernel hyperparameters
+        :return: opt_params (np.ndarray) : array of the optimised kernel hyperparameters
         '''
 
         # make sure the bounds are arrays
@@ -460,21 +435,17 @@ class GP:
 
         return opt_params
 
-    def prediction(self, test_point, return_var=False):
+    def prediction(self, test_point: np.ndarray, return_var: bool = False) -> Tuple[np.ndarray, np.ndarray]:
         '''
         Predicts the function at a test point in parameter space
 
-        Inputs
-        ------
-        test_point (np.ndarray) : test point in parameter space
+        :param: test_point (np.ndarray) : test point in parameter space
 
-        return_var (bool) : if True, the predicted variance will be computed
+        :param: return_var (bool) : if True, the predicted variance will be computed
 
-        Returns
-        -------
-        mean_pred (np.ndarray) : the mean of the GP
+        :return: mean_pred (np.ndarray) : the mean of the GP
 
-        var_pred (np.ndarray) : the variance of the GP (optional)
+        :return: var_pred (np.ndarray) : the variance of the GP (optional)
         '''
 
         # transform point first
@@ -509,7 +480,18 @@ class GP:
         else:
             return mean_pred
 
-    def pred_original_function(self, test_point, n_samples=None):
+    def pred_original_function(self, test_point: np.ndarray, n_samples: int = None) -> np.ndarray:
+        '''
+        Calculates the original function if the log_10 transformation is used on the target.
+
+        :param: test_point (np.ndarray) - the test point in parameter space
+
+        :param: n_samples (int) - we can also generate samples of the function (assuming we have stored the Cholesky factor)
+
+        :return: y_samples (np.ndarray) - if n_samples is specified, samples will be returned
+
+        :return: y_original (np.ndarray) - the predicted function in the linear scale (original space) is returned
+        '''
 
         if not self.y_trans:
             msg = 'You must transform the target in order to use this function'
@@ -518,26 +500,22 @@ class GP:
         if n_samples:
             mu, var = self.prediction(test_point, return_var=True)
             samples = np.random.normal(mu.flatten(), np.sqrt(var).flatten(), n_samples)
-            ySamples = self.transform.y_inv_transform_test(samples)
-            return ySamples
+            y_samples = self.transform.y_inv_transform_test(samples)
+            return y_samples
         else:
             mu = self.prediction(test_point, return_var=False)
             y_original = self.transform.y_inv_transform_test(mu)
             return y_original
 
-    def grad_pre_computations(self, test_point: np.ndarray, order: int = 1):
+    def grad_pre_computations(self, test_point: np.ndarray, order: int = 1) -> Tuple[np.ndarray, np.ndarray]:
         '''
         Pre-compute some quantities prior to calculating the gradients
 
-        Inputs
-        ------
-        test_point (np.ndarray) : test point in parameter space
+        :param: test_point (np.ndarray) : test point in parameter space
 
-        order (int) : order of differentiation (default: 1)
+        :param: order (int) : order of differentiation (default: 1) - not to be confused with order of the polynomial
 
-        Returns
-        -------
-        gradients (tuple) : first and/or second derivatives
+        :return: gradients (tuple) : first and second derivatives (if order = 2)
         '''
 
         # transform test point
@@ -671,23 +649,18 @@ class GP:
         else:
             ValueError('Only Order 1 and Order 2 supported!')
 
-    def derivatives(self, test_point, order=1):
+    def derivatives(self, test_point: np.ndarray, order: int = 1) -> Tuple[np.ndarray, np.ndarray]:
         '''
-        If we did some transformation on the ouputs, we need this function to calculate
-        the 'exact' gradient
+        If we did some transformation on the ouputs, we need this function to calculate the 'exact' gradient
 
-        Inputs
-        ------
-        test_point (np.ndarray) : array of the test point
+        :param: test_point (np.ndarray) : array of the test point
 
-        order (int) : 1 or 2, referrring to first and second derivatives respectively
+        :param: order (int) : 1 or 2, referrring to first and second derivatives respectively
 
-        Returns
-        -------
-        grad (np.ndarray) : first derivative with respect to the input parameters
 
-        gradient_sec (np.ndarray) : second derivatives with respect to the input parameters, if specified
+        :return: grad (np.ndarray) : first derivative with respect to the input parameters
 
+        :return: gradient_sec (np.ndarray) : second derivatives with respect to the input parameters, if specified
         '''
 
         # make a copy of original test point
@@ -725,5 +698,8 @@ class GP:
             else:
                 return grad, gradient_sec
 
-    def delete_kernel(self):
+    def delete_kernel(self) -> None:
+        '''
+        Deletes the kernel matrix from the GP module
+        '''
         del self.chol_stored

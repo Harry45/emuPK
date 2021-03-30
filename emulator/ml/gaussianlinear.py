@@ -1,44 +1,51 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Routine for polynomial regression
+Routine for polynomial regression (Gaussian Linear Model)
 '''
 
+from typing import Tuple
 from functools import reduce
-import scipy.linalg as sl
 import numpy as np
 
-from ml.algebra import solve, matrix_inverse, diagonal
+from ml.algebra import solve, matrix_inverse
 from ml.transformation import transformation
 
 
-class GLM:
+class GLM(object):
 
     '''
     Gaussian Linear Model (GLM) class for polynomial regression
-
-    Inputs
-    ------
-
-    theta (np.ndarray) : matrix of size ntrain x ndim
-
-    y (np.ndarray) : output/target
-
-    var (float or np.ndarray) : noise covariance matrix of size ntrain x ntrain
-
-    order (int) : order of polynomial regression
-
-    x_trans (bool) : if True, pre-whitening is applied
-
-    y_trans (bool) : if True, log of output is used
-
-    use_mean (bool) : if True, the outputs are centred on zero
     '''
 
-    def __init__(self, theta, y, order=2, var=1E-5, x_trans=False, y_trans=False, use_mean=True):
+    def __init__(
+            self,
+            theta: np.ndarray,
+            y: np.ndarray,
+            order: int = 2,
+            var: float = 1E-5,
+            x_trans: bool = False,
+            y_trans: bool = False,
+            use_mean: bool = True):
+        '''
+        :param: theta (np.ndarray) : matrix of size ntrain x ndim
+
+        :param: y (np.ndarray) : output/target
+
+        :param: var (float or np.ndarray) : noise covariance matrix of size ntrain x ntrain
+
+        :param: order (int) : order of polynomial regression
+
+        :param: x_trans (bool) : if True, pre-whitening is applied
+
+        :param: y_trans (bool) : if True, log of output is used
+
+        :param: use_mean (bool) : if True, the outputs are centred on zero
+        '''
 
         # calculate mean inputs
         self.mean_theta = np.mean(theta, axis=0)
@@ -77,19 +84,9 @@ class GLM:
         # order of polynomial
         self.order = order
 
-    def do_transformation(self):
+    def do_transformation(self) -> None:
         '''
         Perform all transformations
-
-        Inputs
-        ------
-
-            None
-
-        Outputs
-        -------
-
-            None
         '''
 
         # we transform both x and y if specified
@@ -109,19 +106,13 @@ class GLM:
             self.x_train = self.theta
             self.y_train = self.y
 
-    def compute_basis(self, test_point=None):
+    def compute_basis(self, test_point: np.ndarray = None) -> np.ndarray:
         '''
         Compute the input basis functions
 
-        Inputs
-        ------
+        :param: test_point (np.ndarray: optional) : if a test point is provided, phi_star is calculated
 
-        test_point (np.ndarray: optional) : if a test point is provided, phi_star is calculated
-
-        Returns
-        -------
-
-        phi or phi_star (np.ndarray) : the basis functions
+        :return: phi or phi_star (np.ndarray) : the basis functions
         '''
 
         if test_point is None:
@@ -143,22 +134,15 @@ class GLM:
 
             return phi_star
 
-    def regression_prior(self, mean=None, cov=None, lambda_cap=1):
+    def regression_prior(self, mean: np.ndarray = None, cov: np.ndarray = None, lambda_cap: float = 1) -> None:
         '''
         Specify the regression prior (mean and covariance)
 
-        Inputs
-        ------
+        :param: mean (np.ndarray) : default zeros
 
-        mean (np.ndarray) : default zeros
+        :param: cov (np.ndarray) : default identity matrix
 
-        cov (np.ndarray) : default identity matrix
-
-        lambda_cap (float) : width of the prior covariance matrix (default 1)
-
-        Returns
-        -------
-
+        :param: lambda_cap (float) : width of the prior covariance matrix (default 1)
         '''
 
         # compute the design matrix first
@@ -180,15 +164,9 @@ class GLM:
                 self.mu = np.zeros((self.nbasis, 1))
                 self.cov = lambda_cap * np.identity(self.nbasis)
 
-    def noise_covariance(self):
+    def noise_covariance(self) -> None:
         '''
         Build the noise covariance matrix
-
-        Inputs
-        ------
-
-        Returns
-        -------
         '''
 
         if (self.var.shape[0] == self.var.shape[1] == self.ntrain):
@@ -196,18 +174,11 @@ class GLM:
         else:
             return self.var * np.identity(self.ntrain)
 
-    def inv_noise_cov(self):
+    def inv_noise_cov(self) -> np.ndarray:
         '''
         Calculate the inverse of the noise covariance matrix
 
-        Inputs
-        ------
-
-        Returns
-        -------
-
-        mat_inv (np.ndarray) : inverse of the noise covariance
-
+        :return: mat_inv (np.ndarray) : inverse of the noise covariance
         '''
 
         # Compute noise covariance first
@@ -217,15 +188,9 @@ class GLM:
 
         return mat_inv
 
-    def inv_prior_cov(self):
+    def inv_prior_cov(self) -> np.ndarray:
         '''
         Calculate the inverse of the prior covariance matrix
-
-        Inputs
-        ------
-
-        Returns
-        -------
 
         mat_inv (np.ndarray) : inverse of the prior covariance matrix (parametric part)
         '''
@@ -239,18 +204,11 @@ class GLM:
 
             return mat_inv
 
-    def evidence(self):
+    def evidence(self) -> np.ndarray:
         '''
         Calculates the log-evidence of the model
 
-        Inputs
-        ------
-
-        Returns
-        -------
-
-        log_evidence (np.ndarray) : the log evidence of the model
-
+        :return: log_evidence (np.ndarray) : the log evidence of the model
         '''
 
         diff = self.y_train - np.dot(self.phi, self.mu)
@@ -276,15 +234,9 @@ class GLM:
 
         return log_evidence
 
-    def posterior_coefficients(self):
+    def posterior_coefficients(self) -> Tuple[np.ndarray, np.ndarray]:
         '''
         Calculate the posterior coefficients
-
-        Inputs
-        ------
-
-        Returns
-        -------
 
         beta_bar (np.ndarray) : mean posterior
 
@@ -313,23 +265,15 @@ class GLM:
 
         return beta_bar, lambda_cap
 
-    def prediction(self, test_point):
+    def prediction(self, test_point: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         '''
         Given a test point, the prediction (mean and variance) will be computed
 
-        TODO: need to improve this function to account for more than 1 dimension
+        :param: test_point (np.ndarray) : vector of test point in parameter space
 
-        Inputs
-        ------
+        :return: post_mean (np.ndarray) : mean of the posterior
 
-        test_point (np.ndarray) : vector of test point in parameter space
-
-        Returns
-        -------
-
-        post_mean (np.ndarray) : mean of the posterior
-
-        post_var (np.ndarray) : variance of the posterior
+        :return: post_var (np.ndarray) : variance of the posterior
         '''
 
         # scale the test point according to the training point

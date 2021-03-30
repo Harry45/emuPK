@@ -1,7 +1,7 @@
-Algebra
-*******
+Kernel
+======
 
-.. automodule:: algebra
+.. automodule:: kernel
    :members:
    :undoc-members:
    :show-inheritance:

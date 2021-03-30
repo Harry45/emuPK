@@ -1,6 +1,6 @@
 # Author: Arrykrishna Mootoovaloo
-# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-# Email : a.mootoovaloo17@imperial.ac.uk
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
 
@@ -12,7 +12,7 @@ import numpy as np
 from scipy.spatial.distance import cdist
 
 
-def rbf(x_train, x_test=None, params=None):
+def rbf(x_train: np.ndarray, x_test: np.ndarray = None, params: np.ndarray = None) -> np.ndarray:
     '''
     Implementation of the Radial Basis Function
 
@@ -64,7 +64,7 @@ def rbf(x_train, x_test=None, params=None):
         return kernel_s, kernel_ss
 
 
-def squared_distance(x1, x2, scale):
+def squared_distance(x1: np.ndarray, x2: np.ndarray, scale: np.ndarray) -> np.ndarray:
     '''
     Calculate the pairwise Euclidean distance between two input vectors (or matrix)
 

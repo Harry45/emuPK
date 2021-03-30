@@ -1,7 +1,7 @@
-Kernel
-******
+Optimisation
+============
 
-.. automodule:: kernel
+.. automodule:: optimisation
    :members:
    :undoc-members:
    :show-inheritance:

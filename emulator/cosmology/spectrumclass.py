@@ -1,4 +1,4 @@
-# Author: (Dr to be) Arrykrishna Mootoovaloo
+# Author: Arrykrishna Mootoovaloo
 # Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
 # Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
@@ -150,6 +150,7 @@ class powerclass(object):
         P_nonlinear (k,z) = A(z) [1 + q(k,z)] P_linear (k,z0)
 
         Calculates the following quantities:
+
         - non linear 3D matter power spectrum, P_nonlinear(k,z)
         - linear matter power spectrum (at the reference redshift - see setting file)
         - the growth factor, A(z)
@@ -157,11 +158,9 @@ class powerclass(object):
 
         :param: parameters (dict) - inputs to calculate the matter power spectrum
 
-        :param: zref (float) - the reference redshift at which the linear matter power spectrum is calculated
-        (DEFAULT: 0.0)
+        :param: zref (float) - the reference redshift at which the linear matter power spectrum is calculated (DEFAULT: 0.0)
 
-        :return: quantities (dictionary) - dictionary consisting of the nonlinear power spectrum, linear power
-        spectrum, growth factor and the non-linear function q(k,z)
+        :return: quantities (dictionary) - dictionary consisting of the nonlinear power spectrum, linear power spectrum, growth factor and the non-linear function q(k,z)
         '''
 
         # Calculate the 3D matter power spectrum
@@ -270,8 +269,7 @@ class powerclass(object):
 
         :param: eps (float) : epsilon - using central finite difference method to calculate gradient
 
-        :return: grad (list) : an array containing the gradient of each parameter (of size (nk x nz) x ndim),
-        for example 800 x 7
+        :return: grad (list) : an array containing the gradient of each parameter (of size (nk x nz) x ndim), for example 800 x 7
         '''
 
         params_keys = params.keys()

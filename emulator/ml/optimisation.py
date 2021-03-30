@@ -1,6 +1,6 @@
 # Author: Arrykrishna Mootoovaloo
-# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-# Email : a.mootoovaloo17@imperial.ac.uk
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
 
@@ -16,7 +16,7 @@ import ml.gaussianlinear as gl
 import settings as st
 
 
-def maximise(x_train, y_train, y_trans=True, lambda_cap=1):
+def maximise(x_train: np.ndarray, y_train: np.ndarray, y_trans: bool = True, lambda_cap: float = 1) -> object:
     '''
     Function for training one GP
 
@@ -24,10 +24,16 @@ def maximise(x_train, y_train, y_trans=True, lambda_cap=1):
 
     :param: y_train (np.ndarray) : the output from the traning point
 
+    :param: y_trans (bool) : option to transform the target
+
+    :param: lambda_cap (float) : the prior width on the regression coefficients
+
     :return: gp_module (class) : Python class with the trained GP
     '''
 
     # ------------------------------------------------------------------------
+    # The GLM here is not important - it is just used as a guige to understand the emulating scheme
+    # We will instead fit both the regression coefficients and the residulas using the GP
     # instantiate the GLM module
     glm_module = gl.GLM(
         theta=x_train,

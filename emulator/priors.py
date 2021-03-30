@@ -1,3 +1,10 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
+
 '''
 Module for important calculations involving the prior. For example,
 
@@ -33,21 +40,19 @@ def all_entities(dict_params):
     '''
     Generate all the priors once we have specified them.
 
-    :param: dict_params (dict) - a list containing the description for each parameter
-    and each description (dictionary) contains the following information:
+    :param: dict_params (dict) - a list containing the description for each parameter and each description (dictionary) contains the following information:
 
-            - distribution, specified by the key 'distribution'
+        - distribution, specified by the key 'distribution'
 
-            - parameter name, specified by the key 'parameter'
+        - parameter name, specified by the key 'parameter'
 
-            - specifications, specified by the key 'specs'
+        - specifications, specified by the key 'specs'
 
-    :return: record (list) - a list containing the prior for each parameter, that is,
-    each element contains the following information:
+    :return: record (list) - a list containing the prior for each parameter, that is, each element contains the following information:
 
-            - parameter name, specified by the key 'parameter'
+        - parameter name, specified by the key 'parameter'
 
-            - distribution, specified by the key 'distribution'
+        - distribution, specified by the key 'distribution'
     '''
 
     # create an empty list to store the distributions

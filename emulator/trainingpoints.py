@@ -1,4 +1,4 @@
-# Author: (Dr to be) Arrykrishna Mootoovaloo
+# Author: Arrykrishna Mootoovaloo
 # Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
 # Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
@@ -34,8 +34,7 @@ def CLASS_RUN(module: object, parameter: np.ndarray, index: int) -> Tuple[bool, 
 
     :index: i*th cosmology from the LHS file
 
-    :return: state (bool), quantities (dict) - state indicates if the run is successful, quantities
-    contain the important quantities generated
+    :return: state (bool), quantities (dict) - state indicates if the run is successful, quantities contain the important quantities generated
     '''
 
     # input to CLASS is a dictionary
@@ -51,7 +50,6 @@ def CLASS_RUN(module: object, parameter: np.ndarray, index: int) -> Tuple[bool, 
     # previously: quantities = cosmo_module.pk_nonlinear_components(param)
     start_time = timeit.default_timer()
     state, quantities = cf.runTime(cf.timeOutComponents, module, param, st.timeout)
-    # state, quantities = cf.runComponents(module, param, st.timeout)
     elapsed = timeit.default_timer() - start_time
 
     info2 = 'Cosmology {0:4d} : Time taken is {1:.2f} seconds'.format(index, elapsed)
@@ -61,6 +59,10 @@ def CLASS_RUN(module: object, parameter: np.ndarray, index: int) -> Tuple[bool, 
 
 
 class trainingset(object):
+    '''
+    Runs CLASS at the LHS points generated using the maximin procedure. If we want to sample the neutrino mass, then, please use maximin_1000_6D as input (assuming it has already been generated), otherwise please use maximin_1000_5D.
+
+    '''
 
     def __init__(self, lhs: str = 'maximin_1000_6D'):
         '''
@@ -114,20 +116,15 @@ class trainingset(object):
         '''
         Generate the power spectrum at the specfic cosmologies
 
-        :param: save (bool) - if True, the generated power spectrum will be saved in a directory. Note that the
-        power spectrum is of shape (nk x nz), for example, 40 x 20. So the final shape will be of size
-        (ncosmo x nk x nz). The power spectrum is flattened in this case, so we save a file of size 1000 x 800
-        (ncosmo = 1000, nk = 40, nz = 20). Therefore, we will have 800 separate GPs in this example.
+        :param: save (bool) - if True, the generated power spectrum will be saved in a directory. Note that the power spectrum is of shape (nk x nz), for example, 40 x 20. So the final shape will be of size (ncosmo x nk x nz). The power spectrum is flattened in this case, so we save a file of size 1000 x 800 (ncosmo = 1000, nk = 40, nz = 20). Therefore, we will have 800 separate GPs in this example.
 
         :param: cosmologies (np.ndarray) - set of cosmologies where we want to run CLASS
 
-        :param: save (bool) - if True, the generated targets (training points/ power spectrum) will be saved in
-        a directory
+        :param: save (bool) - if True, the generated targets (training points/ power spectrum) will be saved in a directory
 
-        :return: components (dict) - a list of the different quantities (growth factor, linear matter power
-        spectrum, q function) evaluated at different cosmologies
+        :return: components (dict) - a list of the different quantities (growth factor, linear matter power spectrum, q function) evaluated at different cosmologies or
 
-        OR pk_non (np.ndarray) - the power spectrum evaluated at each cosmology
+        :return: pk_non (np.ndarray) - the power spectrum evaluated at each cosmology
         '''
 
         # get the class module
@@ -222,4 +219,4 @@ if __name__ == "__main__":
 
     training_points = trainingset(lhs='maximin_1000_6D')
     cosmologies = training_points.scale(save=False)
-    outputs = training_points.targets(cosmologies[0:5], save=False)
+    outputs = training_points.targets(cosmologies, save=True)

@@ -20,7 +20,7 @@ emuPK
 
 	* - :math:`\Omega_{\text{cdm}}h^{2}`
 	  - CDM density 
-	  - :math:`\mathcal{U}[0.01, 0.40]`
+	  - :math:`\mathcal{U}[0.06, 0.40]`
 
 	* - :math:`\Omega_{\text{b}}h^{2}`
 	  - Baryon density 
@@ -42,9 +42,7 @@ emuPK
 	  - Neutrino mass (eV)
 	  - :math:`\mathcal{U}[0.06, 1.0]`
 
-	* - :math:`A_{\text{bary}}`
-	  - Free amplitude baryon feedback parameter
-	  - :math:`\mathcal{U}[0.0, 2.0]`
+Including the neutrino mass is an optional step in the process of building the emulator. For further details, please refer to the explanation below.
 
 **Citation**
 
@@ -72,29 +70,31 @@ If you use this code in your research, please cite the following papers: `Paper 
 	}
 
 
-
-Background
-==========
-In this section, we explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator. 
+We explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator. Here we provide a brief overview of the code structure. Please see `Github <https://github.com/Harry45/emuPK>`_ for full code structure. We do not cover each code in full detail here.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Usage
+   :caption: Configurations
 
-   wl
    gettingStarted
-   
-API Documentation
-=================
-Here we provide a brief overview of the code structure. Please see `Github <https://github.com/Harry45/emuPK>`_ for full code structure. We do not cover each code in full detail here.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Codes
+   :caption: Main
 
-   priors
-   utilities
+   main/modules
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Cosmology
+
+   cosmology/modules
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Machine Learning
+
+   ml/modules
 
 Indices and tables
 ==================

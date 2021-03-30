@@ -81,15 +81,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Usage</span></p>
+              <p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html#example">Example</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Main</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../priors.html">Priors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/modules.html">Emulator Build-Up</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cosmology/modules.html">3D Matter Power Spectrum</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ml/modules.html">Gaussian Process</a></li>
 </ul>
 
             
@@ -154,93 +161,89 @@
            <div itemprop="articleBody">
             
   <h1>Source code for priors</h1><div class="highlight"><pre>
-<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span></span><span class="c1"># Author: Arrykrishna Mootoovaloo</span>
+<span class="c1"># Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq</span>
+<span class="c1"># Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk</span>
+<span class="c1"># Affiliation : Imperial Centre for Inference and Cosmology</span>
+<span class="c1"># Status : Under Development</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Module for important calculations involving the prior. For example,</span>
 
 <span class="sd">- when scaling the Latin Hypercube samples to the appropriate prior range</span>
 
 <span class="sd">- when calculating the posterior if the emulator is connected with an MCMC sampler</span>
 <span class="sd">&#39;&#39;&#39;</span>
+
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">settings</span> <span class="k">as</span> <span class="nn">st</span>
 
 
-<div class="viewcode-block" id="entity"><a class="viewcode-back" href="../priors.html#priors.entity">[docs]</a><span class="k">def</span> <span class="nf">entity</span><span class="p">(</span><span class="n">dictionary</span><span class="p">):</span>
+<div class="viewcode-block" id="entity"><a class="viewcode-back" href="../main/priors.html#priors.entity">[docs]</a><span class="k">def</span> <span class="nf">entity</span><span class="p">(</span><span class="n">dictionary</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Generates the entity of each parameter by using scipy.stats function.</span>
 
 <span class="sd">    :param: dictionary (dict) - a dictionary containing information for each parameter, that is,</span>
 
-<span class="sd">            - distribution, specificied by the key &#39;distribution&#39;</span>
-
-<span class="sd">            - parameter name, specified by the key &#39;parameter&#39;</span>
+<span class="sd">            - distribution, specified by the key &#39;distribution&#39;</span>
 
 <span class="sd">            - specifications, specified by the key &#39;specs&#39;</span>
 
-<span class="sd">    :return: param_entity (dict) - a dictionary containing the parameter name and the distribution generated</span>
+<span class="sd">    :return: dist (dict) - the distribution generated using scipy</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">dist</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;scipy.stats.&#39;</span> <span class="o">+</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;distribution&#39;</span><span class="p">])(</span><span class="o">*</span><span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;specs&#39;</span><span class="p">])</span>
 
-    <span class="n">param_entity</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;parameter&#39;</span><span class="p">:</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;parameter&#39;</span><span class="p">],</span> <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="n">dist</span><span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">param_entity</span></div>
+    <span class="k">return</span> <span class="n">dist</span></div>
 
 
-<div class="viewcode-block" id="all_entities"><a class="viewcode-back" href="../priors.html#priors.all_entities">[docs]</a><span class="k">def</span> <span class="nf">all_entities</span><span class="p">(</span><span class="n">list_params</span><span class="p">):</span>
+<div class="viewcode-block" id="all_entities"><a class="viewcode-back" href="../main/priors.html#priors.all_entities">[docs]</a><span class="k">def</span> <span class="nf">all_entities</span><span class="p">(</span><span class="n">dict_params</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Generate all the priors once we have specified them.</span>
 
-<span class="sd">    :param: list_params (list) - a list containing the description for each parameter and each description (dictionary) contains the following information:</span>
+<span class="sd">    :param: dict_params (dict) - a list containing the description for each parameter and each description (dictionary) contains the following information:</span>
 
-<span class="sd">            - distribution, specificied by the key &#39;distribution&#39;</span>
+<span class="sd">        - distribution, specified by the key &#39;distribution&#39;</span>
 
-<span class="sd">            - parameter name, specified by the key &#39;parameter&#39;</span>
+<span class="sd">        - parameter name, specified by the key &#39;parameter&#39;</span>
 
-<span class="sd">            - specifications, specified by the key &#39;specs&#39;</span>
+<span class="sd">        - specifications, specified by the key &#39;specs&#39;</span>
 
 <span class="sd">    :return: record (list) - a list containing the prior for each parameter, that is, each element contains the following information:</span>
 
-<span class="sd">            - parameter name, specifiied by the key &#39;parameter&#39;</span>
+<span class="sd">        - parameter name, specified by the key &#39;parameter&#39;</span>
 
-<span class="sd">            - distribution, specified by the key &#39;distribution&#39;</span>
+<span class="sd">        - distribution, specified by the key &#39;distribution&#39;</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="c1"># number of parameters</span>
-    <span class="n">n_params</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_params</span><span class="p">)</span>
-
     <span class="c1"># create an empty list to store the distributions</span>
-    <span class="n">record</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">record</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_params</span><span class="p">):</span>
-        <span class="n">record</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entity</span><span class="p">(</span><span class="n">list_params</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dict_params</span><span class="p">:</span>
+        <span class="n">record</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">entity</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">priors</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">record</span></div>
 
 
-<div class="viewcode-block" id="log_prod_pdf"><a class="viewcode-back" href="../priors.html#priors.log_prod_pdf">[docs]</a><span class="k">def</span> <span class="nf">log_prod_pdf</span><span class="p">(</span><span class="n">params_desc</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+<div class="viewcode-block" id="log_prod_pdf"><a class="viewcode-back" href="../main/priors.html#priors.log_prod_pdf">[docs]</a><span class="k">def</span> <span class="nf">log_prod_pdf</span><span class="p">(</span><span class="n">desc</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Calculate the log-product for a set of parameters given the priors</span>
 
-<span class="sd">    :param: params_desc (list) - list containing dictionaries of parameters. Each dictionary contains the parameter&#39;s name and its distribution.</span>
+<span class="sd">    :param: desc (dict) - dictionary of parameters</span>
 
 <span class="sd">    :param: parameters (np.ndarray) - an array of parameters</span>
 
 <span class="sd">    :return:  log_sum (float) - the log-product of when the pdf of each parameter is multiplied with another</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="c1"># number of parameters</span>
-    <span class="n">n_params</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-    <span class="c1"># number of parameters should be the same as the length of the description for the parameters</span>
-    <span class="k">assert</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params_desc</span><span class="p">)</span> <span class="o">==</span> <span class="n">n_params</span><span class="p">),</span> <span class="s1">&#39;Number of parameters should be of the same length as the prior list&#39;</span>
-
     <span class="c1"># initialise log_sum to 0.0</span>
     <span class="n">log_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
 
     <span class="c1"># calculate the log-pdf for each parameter</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_params</span><span class="p">):</span>
-        <span class="n">log_sum</span> <span class="o">+=</span> <span class="n">params_desc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;distribution&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="n">log_sum</span> <span class="o">+=</span> <span class="n">desc</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="n">p</span><span class="p">])</span>
 
     <span class="c1"># if (any) parameter lies outside prior range, set log_sum to a very small value</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">log_sum</span><span class="p">):</span>

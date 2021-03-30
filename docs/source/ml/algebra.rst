@@ -1,5 +1,5 @@
 Algebra
-*******
+=======
 
 .. automodule:: algebra
    :members:

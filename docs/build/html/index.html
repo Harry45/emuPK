@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Weak Lensing Power Spectrum" href="wl.html" /> 
+    <link rel="next" title="Basic Setup" href="gettingStarted.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,15 +82,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Usage</span></p>
+              <p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html#example">Example</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Main</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main/modules.html">Emulator Build-Up</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cosmology/modules.html">3D Matter Power Spectrum</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ml/modules.html">Gaussian Process</a></li>
 </ul>
 
             
@@ -176,7 +183,7 @@
 <tbody>
 <tr class="row-even"><td><p><img class="math" src="_images/math/a43c6ce2bf7d8a5442ab0618e98687d5e60d0e7b.png" alt="\Omega_{\text{cdm}}h^{2}"/></p></td>
 <td><p>CDM density</p></td>
-<td><p><img class="math" src="_images/math/a71d5d266f79cf23132122b70a2d9821a7bfe5b1.png" alt="\mathcal{U}[0.01, 0.40]"/></p></td>
+<td><p><img class="math" src="_images/math/22c1308ddb732a26239641242128dc1420f9a785.png" alt="\mathcal{U}[0.06, 0.40]"/></p></td>
 </tr>
 <tr class="row-odd"><td><p><img class="math" src="_images/math/da4b811cd350252553939255becaf76ae9ab65d8.png" alt="\Omega_{\text{b}}h^{2}"/></p></td>
 <td><p>Baryon density</p></td>
@@ -198,12 +205,9 @@
 <td><p>Neutrino mass (eV)</p></td>
 <td><p><img class="math" src="_images/math/b3ad9581c8fdfcfcd2d74587d57fb2bcd49327c5.png" alt="\mathcal{U}[0.06, 1.0]"/></p></td>
 </tr>
-<tr class="row-even"><td><p><img class="math" src="_images/math/f23f81e2fd62755dd85379fbe40e39b38c7ba5ab.png" alt="A_{\text{bary}}"/></p></td>
-<td><p>Free amplitude baryon feedback parameter</p></td>
-<td><p><img class="math" src="_images/math/79fda1c18fd47b1a8a95e9b58c4e75db0afb08ac.png" alt="\mathcal{U}[0.0, 2.0]"/></p></td>
-</tr>
 </tbody>
 </table>
+<p>Including the neutrino mass is an optional step in the process of building the emulator. For further details, please refer to the explanation below.</p>
 <p><strong>Citation</strong></p>
 <p>If you use this code in your research, please cite the following papers: <a class="reference external" href="https://arxiv.org/abs/2005.06551">Paper 1</a> and Paper 2 (in preparation):</p>
 <div class="highlight-tex notranslate"><div class="highlight"><pre><span></span>@ARTICLE<span class="nb">{</span>2020MNRAS.497.2213M,
@@ -226,37 +230,50 @@ archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
 <span class="nb">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="background">
-<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
-<p>In this section, we explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator.</p>
+<p>We explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator. Here we provide a brief overview of the code structure. Please see <a class="reference external" href="https://github.com/Harry45/emuPK">Github</a> for full code structure. We do not cover each code in full detail here.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Usage</span></p>
+<p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gettingStarted.html#video">Video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gettingStarted.html#image">Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html#example">Example</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Main</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main/modules.html">Emulator Build-Up</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main/predictions.html">Predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main/priors.html">Priors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main/training.html">Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main/trainingpoints.html">Training Points</a></li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="api-documentation">
-<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Here we provide a brief overview of the code structure. Please see <a class="reference external" href="https://github.com/Harry45/emuPK">Github</a> for full code structure. We do not cover each code in full detail here.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="priors.html#module-priors">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cosmology/modules.html">3D Matter Power Spectrum</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cosmology/cosmofuncs.html">Cosmology Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cosmology/redshift.html">Redshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cosmology/spectrumcalc.html">Power Spectrum Calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cosmology/spectrumclass.html">CLASS Power Spectrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cosmology/weaklensing.html">Weak Lensing Spectra</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="helpers.html">Helpers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kernel.html">Kernel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transformation.html">Transformation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algebra.html">Algebra</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ml/modules.html">Gaussian Process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ml/algebra.html">Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/gaussianlinear.html">Gaussian Linear Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/kernel.html">Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/optimisation.html">Optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/semigp.html">GP with Basis Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/transformation.html">Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ml/zerogp.html">GP with Zero Mean</a></li>
 </ul>
 </li>
 </ul>
@@ -279,7 +296,7 @@ archivePrefix = <span class="nb">{</span>arXiv<span class="nb">}</span>,
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="wl.html" class="btn btn-neutral float-right" title="Weak Lensing Power Spectrum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gettingStarted.html" class="btn btn-neutral float-right" title="Basic Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

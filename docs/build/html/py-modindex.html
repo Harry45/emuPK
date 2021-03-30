@@ -88,15 +88,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Usage</span></p>
+              <p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html#example">Example</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Main</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main/modules.html">Emulator Build-Up</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cosmology/modules.html">3D Matter Power Spectrum</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ml/modules.html">Gaussian Process</a></li>
 </ul>
 
             
@@ -163,10 +170,16 @@
 
    <div class="modindex-jumpbox">
    <a href="#cap-a"><strong>a</strong></a> | 
-   <a href="#cap-h"><strong>h</strong></a> | 
+   <a href="#cap-c"><strong>c</strong></a> | 
+   <a href="#cap-g"><strong>g</strong></a> | 
    <a href="#cap-k"><strong>k</strong></a> | 
+   <a href="#cap-o"><strong>o</strong></a> | 
    <a href="#cap-p"><strong>p</strong></a> | 
-   <a href="#cap-t"><strong>t</strong></a>
+   <a href="#cap-r"><strong>r</strong></a> | 
+   <a href="#cap-s"><strong>s</strong></a> | 
+   <a href="#cap-t"><strong>t</strong></a> | 
+   <a href="#cap-w"><strong>w</strong></a> | 
+   <a href="#cap-z"><strong>z</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -176,15 +189,23 @@
      <tr>
        <td></td>
        <td>
-       <a href="algebra.html#module-algebra"><code class="xref">algebra</code></a></td><td>
+       <a href="ml/algebra.html#module-algebra"><code class="xref">algebra</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-h"><td></td><td>
-       <strong>h</strong></td><td></td></tr>
+     <tr class="cap" id="cap-c"><td></td><td>
+       <strong>c</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="helpers.html#module-helpers"><code class="xref">helpers</code></a></td><td>
+       <a href="cosmology/cosmofuncs.html#module-cosmofuncs"><code class="xref">cosmofuncs</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-g"><td></td><td>
+       <strong>g</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ml/gaussianlinear.html#module-gaussianlinear"><code class="xref">gaussianlinear</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-k"><td></td><td>
@@ -192,7 +213,15 @@
      <tr>
        <td></td>
        <td>
-       <a href="kernel.html#module-kernel"><code class="xref">kernel</code></a></td><td>
+       <a href="ml/kernel.html#module-kernel"><code class="xref">kernel</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-o"><td></td><td>
+       <strong>o</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ml/optimisation.html#module-optimisation"><code class="xref">optimisation</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-p"><td></td><td>
@@ -200,7 +229,38 @@
      <tr>
        <td></td>
        <td>
-       <a href="priors.html#module-priors"><code class="xref">priors</code></a></td><td>
+       <a href="main/predictions.html#module-predictions"><code class="xref">predictions</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="main/priors.html#module-priors"><code class="xref">priors</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-r"><td></td><td>
+       <strong>r</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="cosmology/redshift.html#module-redshift"><code class="xref">redshift</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-s"><td></td><td>
+       <strong>s</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ml/semigp.html#module-semigp"><code class="xref">semigp</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="cosmology/spectrumcalc.html#module-spectrumcalc"><code class="xref">spectrumcalc</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="cosmology/spectrumclass.html#module-spectrumclass"><code class="xref">spectrumclass</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-t"><td></td><td>
@@ -208,7 +268,33 @@
      <tr>
        <td></td>
        <td>
-       <a href="transformation.html#module-transformation"><code class="xref">transformation</code></a></td><td>
+       <a href="main/training.html#module-training"><code class="xref">training</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="main/trainingpoints.html#module-trainingpoints"><code class="xref">trainingpoints</code></a></td><td>
+       <em></em></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ml/transformation.html#module-transformation"><code class="xref">transformation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-w"><td></td><td>
+       <strong>w</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="cosmology/weaklensing.html#module-weaklensing"><code class="xref">weaklensing</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-z"><td></td><td>
+       <strong>z</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="ml/zerogp.html#module-zerogp"><code class="xref">zerogp</code></a></td><td>
        <em></em></td></tr>
    </table>
 

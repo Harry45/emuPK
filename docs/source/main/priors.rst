@@ -1,7 +1,7 @@
-Kernel
-******
+Priors
+======
 
-.. automodule:: kernel
+.. automodule:: priors
    :members:
    :undoc-members:
    :show-inheritance:

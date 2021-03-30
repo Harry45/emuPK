@@ -1,4 +1,4 @@
-# Author: (Dr to be) Arrykrishna Mootoovaloo
+# Author: Arrykrishna Mootoovaloo
 # Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
 # Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
@@ -337,14 +337,14 @@ def dictionary_params(d: dict) -> Tuple[dict, dict, dict]:
     '''
     A dictionary for storing all the parameters
 
-    The parameters are organised in the following order:
+    The parameters are organised in the following order (using CLASS and MontePython notations):
 
-    0: omega_cdm_h2
-    1: omega_b_h2
-    2: ln_10_10_A_s
-    3: n_s
-    4: h
-    5: sum_neutrino
+    - omega_cdm
+    - omega_b
+    - ln10^{10}A_s
+    - n_s
+    - h
+    - M_tot
 
     :param: par (np.ndarray): parameters for the inference
 
@@ -405,8 +405,7 @@ def dictionary_params(d: dict) -> Tuple[dict, dict, dict]:
 
 def bar_fed(k, z, a_bary=0.0):
     """
-    Fitting formula for baryon feedback following equation 10 and Table 2 from
-    J. Harnois-Deraps et al. 2014 (arXiv.1407.4301)
+    Fitting formula for baryon feedback following equation 10 and Table 2 from J. Harnois-Deraps et al. 2014 (arXiv.1407.4301)
 
     :param: k (np.ndarray): the wavevector
 
@@ -449,8 +448,7 @@ def get_factor_ia(quant: dict, redshift: np.ndarray, amplitude: float, exponent=
     '''
     Calculates F(chi) - equation 23 in Kohlinger et al. 2017.
 
-    :param: quant (dict) - a dictionary containingthe critical density, omega matter, linear groth rate,
-    Hubble parameter
+    :param: quant (dict) - a dictionary containingthe critical density, omega matter, linear groth rate, Hubble parameter
 
     :param: redshift (np.ndarray) - a vector for the redshift
 

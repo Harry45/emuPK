@@ -1,10 +1,11 @@
+# Author: Arrykrishna Mootoovaloo
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
+# Affiliation : Imperial Centre for Inference and Cosmology
+# Status : Under Development
+
 '''
-Author: Arrykrishna Mootoovaloo
-Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-Email : a.mootoovaloo17@imperial.ac.uk
-Affiliation : Imperial Centre for Inference and Cosmology
-Status : Under Development
-Description : Setup for the redshift distributions
+Setup for the redshift distributions
 '''
 
 import numpy as np
@@ -48,7 +49,7 @@ class nz_dist(object):
         '''
         Calculate the analytic function
 
-        n(z) = z^2 exp(-z/z0)
+        :math:`n(z)=z^{2}\\text{exp}(-\\frac{z}{z_{0}})`
         '''
         z0 = zm / 3.
 
@@ -67,6 +68,8 @@ class nz_dist(object):
         https://arxiv.org/pdf/1502.05872.pdf
 
         Calculate the analytic function
+
+        :math:`n(z)=z^{\\alpha}\\text{exp}(-(\\frac{z}{z_{0}})^{\\beta})`
         '''
 
         nz = self.nz_z**alpha * np.exp(-(self.nz_z / z0)**beta)
@@ -82,6 +85,8 @@ class nz_dist(object):
     def nz_gaussian(self, z0: float, sigma: float) -> np.ndarray:
         '''
         Gaussian n(z) distribution for the tomographic bin
+
+        :math:`n(z)=\\frac{1}{2\pi\sigma}\\text{exp}(-\\frac{1}{2}\\frac{(z-z_{0})^{2}}{\sigma^{2}})`
         '''
 
         nz_dist = ss.norm(z0, sigma)

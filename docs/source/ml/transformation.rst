@@ -1,5 +1,5 @@
 Transformation
-**************
+==============
 
 .. automodule:: transformation
    :members:

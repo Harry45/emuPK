@@ -1,8 +1,9 @@
-# Author: (Dr to be) Arrykrishna Mootoovaloo
+# Author: Arrykrishna Mootoovaloo
 # Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
 # Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
+
 
 '''
 Calculate and store the predictions at test points in parameter space

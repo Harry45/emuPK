@@ -81,15 +81,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Usage</span></p>
+              <p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html#example">Example</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Main</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="priors.html">Priors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main/modules.html">Emulator Build-Up</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cosmology/modules.html">3D Matter Power Spectrum</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ml/modules.html">Gaussian Process</a></li>
 </ul>
 
             
@@ -158,18 +165,26 @@
 
 <div class="genindex-jumpbox">
  <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
- | <a href="#H"><strong>H</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  | <a href="#X"><strong>X</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -179,20 +194,95 @@
     algebra
 
       <ul>
-        <li><a href="algebra.html#module-algebra">module</a>
+        <li><a href="ml/algebra.html#module-algebra">module</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="priors.html#priors.all_entities">all_entities() (in module priors)</a>
+      <li><a href="main/priors.html#priors.all_entities">all_entities() (in module priors)</a>
 </li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.bar_fed">bar_fed() (in module cosmofuncs)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/weaklensing.html#weaklensing.spectra.basic_class">basic_class() (weaklensing.spectra method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass.class_compute">class_compute() (spectrumclass.powerclass method)</a>
+</li>
+      <li><a href="main/trainingpoints.html#trainingpoints.CLASS_RUN">CLASS_RUN() (in module trainingpoints)</a>
+</li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.compute_basis">compute_basis() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.compute_basis">(semigp.GP method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass.configurations">configurations() (spectrumclass.powerclass method)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.cosmo_params">cosmo_params() (in module cosmofuncs)</a>
+</li>
+      <li>
+    cosmofuncs
+
+      <ul>
+        <li><a href="cosmology/cosmofuncs.html#module-cosmofuncs">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="algebra.html#algebra.diagonal">diagonal() (in module algebra)</a>
+      <li><a href="ml/semigp.html#semigp.GP.delete_kernel">delete_kernel() (semigp.GP method)</a>
+
+      <ul>
+        <li><a href="ml/zerogp.html#zerogp.GP.delete_kernel">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.delete_module">delete_module() (in module cosmofuncs)</a>
+</li>
+      <li><a href="ml/semigp.html#semigp.GP.derivatives">derivatives() (semigp.GP method)</a>
+
+      <ul>
+        <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass.derivatives">(spectrumclass.powerclass method)</a>
+</li>
+        <li><a href="ml/zerogp.html#zerogp.GP.derivatives">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+      <li><a href="ml/algebra.html#algebra.diagonal">diagonal() (in module algebra)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.dictionary_params">dictionary_params() (in module cosmofuncs)</a>
+</li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.do_transformation">do_transformation() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.do_transformation">(semigp.GP method)</a>
+</li>
+        <li><a href="ml/zerogp.html#zerogp.GP.do_transformation">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.ds_ee">ds_ee() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.ds_gi">ds_gi() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.ds_ii">ds_ii() (in module cosmofuncs)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -200,19 +290,87 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="priors.html#priors.entity">entity() (in module priors)</a>
+      <li><a href="main/priors.html#priors.entity">entity() (in module priors)</a>
 </li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.evidence">evidence() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.evidence">(semigp.GP method)</a>
+</li>
+        <li><a href="ml/zerogp.html#zerogp.GP.evidence">(zerogp.GP method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
-<h2 id="H">H</h2>
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ml/semigp.html#semigp.GP.fit">fit() (semigp.GP method)</a>
+
+      <ul>
+        <li><a href="ml/zerogp.html#zerogp.GP.fit">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
-    helpers
+    gaussianlinear
 
       <ul>
-        <li><a href="helpers.html#module-helpers">module</a>
+        <li><a href="ml/gaussianlinear.html#module-gaussianlinear">module</a>
+</li>
+      </ul></li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.get_critical_density">get_critical_density() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.get_factor_ia">get_factor_ia() (in module cosmofuncs)</a>
+</li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM">GLM (class in gaussianlinear)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ml/semigp.html#semigp.GP">GP (class in semigp)</a>
+
+      <ul>
+        <li><a href="ml/zerogp.html#zerogp.GP">(class in zerogp)</a>
+</li>
+      </ul></li>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum.gp_gradient">gp_gradient() (spectrumcalc.matterspectrum method)</a>
+</li>
+      <li><a href="ml/semigp.html#semigp.GP.grad_pre_computations">grad_pre_computations() (semigp.GP method)</a>
+
+      <ul>
+        <li><a href="ml/zerogp.html#zerogp.GP.grad_pre_computations">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum.int_grad_pk_nl">int_grad_pk_nl() (spectrumcalc.matterspectrum method)</a>
+</li>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum.int_pk_nl">int_pk_nl() (spectrumcalc.matterspectrum method)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.integration_q_ell">integration_q_ell() (in module cosmofuncs)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.inv_noise_cov">inv_noise_cov() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.inv_noise_cov">(semigp.GP method)</a>
+</li>
+      </ul></li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.inv_prior_cov">inv_prior_cov() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.inv_prior_cov">(semigp.GP method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -225,7 +383,7 @@
     kernel
 
       <ul>
-        <li><a href="kernel.html#module-kernel">module</a>
+        <li><a href="ml/kernel.html#module-kernel">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -234,13 +392,11 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="helpers.html#helpers.load_arrays">load_arrays() (in module helpers)</a>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum.load_gps">load_gps() (spectrumcalc.matterspectrum method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="helpers.html#helpers.load_pkl_file">load_pkl_file() (in module helpers)</a>
-</li>
-      <li><a href="priors.html#priors.log_prod_pdf">log_prod_pdf() (in module priors)</a>
+      <li><a href="main/priors.html#priors.log_prod_pdf">log_prod_pdf() (in module priors)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -248,21 +404,100 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="algebra.html#algebra.matrix_inverse">matrix_inverse() (in module algebra)</a>
+      <li><a href="main/predictions.html#predictions.main">main() (in module predictions)</a>
+
+      <ul>
+        <li><a href="main/training.html#training.main">(in module training)</a>
+</li>
+      </ul></li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.marg_params">marg_params() (in module cosmofuncs)</a>
+</li>
+      <li><a href="ml/algebra.html#algebra.matrix_inverse">matrix_inverse() (in module algebra)</a>
+</li>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum">matterspectrum (class in spectrumcalc)</a>
+</li>
+      <li><a href="ml/optimisation.html#optimisation.maximise">maximise() (in module optimisation)</a>
+</li>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum.mean_prediction">mean_prediction() (spectrumcalc.matterspectrum method)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.mk_dict">mk_dict() (in module cosmofuncs)</a>
 </li>
       <li>
     module
 
       <ul>
-        <li><a href="algebra.html#module-algebra">algebra</a>
+        <li><a href="ml/algebra.html#module-algebra">algebra</a>
 </li>
-        <li><a href="helpers.html#module-helpers">helpers</a>
+        <li><a href="cosmology/cosmofuncs.html#module-cosmofuncs">cosmofuncs</a>
 </li>
-        <li><a href="kernel.html#module-kernel">kernel</a>
+        <li><a href="ml/gaussianlinear.html#module-gaussianlinear">gaussianlinear</a>
 </li>
-        <li><a href="priors.html#module-priors">priors</a>
+        <li><a href="ml/kernel.html#module-kernel">kernel</a>
 </li>
-        <li><a href="transformation.html#module-transformation">transformation</a>
+        <li><a href="ml/optimisation.html#module-optimisation">optimisation</a>
+</li>
+        <li><a href="main/predictions.html#module-predictions">predictions</a>
+</li>
+        <li><a href="main/priors.html#module-priors">priors</a>
+</li>
+        <li><a href="cosmology/redshift.html#module-redshift">redshift</a>
+</li>
+        <li><a href="ml/semigp.html#module-semigp">semigp</a>
+</li>
+        <li><a href="cosmology/spectrumcalc.html#module-spectrumcalc">spectrumcalc</a>
+</li>
+        <li><a href="cosmology/spectrumclass.html#module-spectrumclass">spectrumclass</a>
+</li>
+        <li><a href="main/training.html#module-training">training</a>
+</li>
+        <li><a href="main/trainingpoints.html#module-trainingpoints">trainingpoints</a>
+</li>
+        <li><a href="ml/transformation.html#module-transformation">transformation</a>
+</li>
+        <li><a href="cosmology/weaklensing.html#module-weaklensing">weaklensing</a>
+</li>
+        <li><a href="ml/zerogp.html#module-zerogp">zerogp</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/weaklensing.html#weaklensing.spectra.n_of_z">n_of_z() (weaklensing.spectra method)</a>
+</li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.noise_covariance">noise_covariance() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.noise_covariance">(semigp.GP method)</a>
+</li>
+        <li><a href="ml/zerogp.html#zerogp.GP.noise_covariance">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.nuisance_params">nuisance_params() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/redshift.html#redshift.nz_dist">nz_dist (class in redshift)</a>
+</li>
+      <li><a href="cosmology/redshift.html#redshift.nz_dist.nz_gaussian">nz_gaussian() (redshift.nz_dist method)</a>
+</li>
+      <li><a href="cosmology/redshift.html#redshift.nz_dist.nz_model_1">nz_model_1() (redshift.nz_dist method)</a>
+</li>
+      <li><a href="cosmology/redshift.html#redshift.nz_dist.nz_model_2">nz_model_2() (redshift.nz_dist method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    optimisation
+
+      <ul>
+        <li><a href="ml/optimisation.html#module-optimisation">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -271,20 +506,84 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="main/training.html#training.parallel_training">parallel_training() (in module training)</a>
+</li>
+      <li><a href="cosmology/weaklensing.html#weaklensing.spectra.pk_matter">pk_matter() (weaklensing.spectra method)</a>
+</li>
+      <li><a href="cosmology/spectrumcalc.html#spectrumcalc.matterspectrum.pk_nl_pred">pk_nl_pred() (spectrumcalc.matterspectrum method)</a>
+</li>
+      <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass.pk_nonlinear">pk_nonlinear() (spectrumclass.powerclass method)</a>
+</li>
+      <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass.pk_nonlinear_components">pk_nonlinear_components() (spectrumclass.powerclass method)</a>
+</li>
+      <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass.pk_nonlinear_timed">pk_nonlinear_timed() (spectrumclass.powerclass method)</a>
+</li>
+      <li><a href="ml/semigp.html#semigp.GP.posterior">posterior() (semigp.GP method)</a>
+</li>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.posterior_coefficients">posterior_coefficients() (gaussianlinear.GLM method)</a>
+</li>
+      <li><a href="cosmology/spectrumclass.html#spectrumclass.powerclass">powerclass (class in spectrumclass)</a>
+</li>
+      <li><a href="ml/semigp.html#semigp.GP.pred_original_function">pred_original_function() (semigp.GP method)</a>
+
+      <ul>
+        <li><a href="ml/zerogp.html#zerogp.GP.pred_original_function">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.prediction">prediction() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.prediction">(semigp.GP method)</a>
+</li>
+        <li><a href="ml/zerogp.html#zerogp.GP.prediction">(zerogp.GP method)</a>
+</li>
+      </ul></li>
+      <li>
+    predictions
+
+      <ul>
+        <li><a href="main/predictions.html#module-predictions">module</a>
+</li>
+      </ul></li>
       <li>
     priors
 
       <ul>
-        <li><a href="priors.html#module-priors">module</a>
+        <li><a href="main/priors.html#module-priors">module</a>
 </li>
       </ul></li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.ps_ee">ps_ee() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.ps_gi">ps_gi() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.ps_ii">ps_ii() (in module cosmofuncs)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="kernel.html#kernel.rbf">rbf() (in module kernel)</a>
+      <li><a href="ml/kernel.html#kernel.rbf">rbf() (in module kernel)</a>
+</li>
+      <li>
+    redshift
+
+      <ul>
+        <li><a href="cosmology/redshift.html#module-redshift">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ml/gaussianlinear.html#gaussianlinear.GLM.regression_prior">regression_prior() (gaussianlinear.GLM method)</a>
+
+      <ul>
+        <li><a href="ml/semigp.html#semigp.GP.regression_prior">(semigp.GP method)</a>
+</li>
+      </ul></li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.runTime">runTime() (in module cosmofuncs)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -292,17 +591,36 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="helpers.html#helpers.save_excel">save_excel() (in module helpers)</a>
+      <li><a href="main/trainingpoints.html#trainingpoints.trainingset.scale">scale() (trainingpoints.trainingset method)</a>
 </li>
-      <li><a href="algebra.html#algebra.solve">solve() (in module algebra)</a>
+      <li>
+    semigp
+
+      <ul>
+        <li><a href="ml/semigp.html#module-semigp">module</a>
+</li>
+      </ul></li>
+      <li><a href="ml/algebra.html#algebra.solve">solve() (in module algebra)</a>
+</li>
+      <li><a href="cosmology/weaklensing.html#weaklensing.spectra">spectra (class in weaklensing)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="kernel.html#kernel.squared_distance">squared_distance() (in module kernel)</a>
+      <li>
+    spectrumcalc
+
+      <ul>
+        <li><a href="cosmology/spectrumcalc.html#module-spectrumcalc">module</a>
 </li>
-      <li><a href="helpers.html#helpers.store_arrays">store_arrays() (in module helpers)</a>
+      </ul></li>
+      <li>
+    spectrumclass
+
+      <ul>
+        <li><a href="cosmology/spectrumclass.html#module-spectrumclass">module</a>
 </li>
-      <li><a href="helpers.html#helpers.store_pkl_file">store_pkl_file() (in module helpers)</a>
+      </ul></li>
+      <li><a href="ml/kernel.html#kernel.squared_distance">squared_distance() (in module kernel)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -310,16 +628,59 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="main/trainingpoints.html#trainingpoints.trainingset.targets">targets() (trainingpoints.trainingset method)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.timeOut">timeOut() (in module cosmofuncs)</a>
+</li>
+      <li><a href="cosmology/cosmofuncs.html#cosmofuncs.timeOutComponents">timeOutComponents() (in module cosmofuncs)</a>
+</li>
+      <li><a href="main/training.html#training.train">train() (in module training)</a>
+</li>
       <li>
-    transformation
+    training
 
       <ul>
-        <li><a href="transformation.html#module-transformation">module</a>
+        <li><a href="main/training.html#module-training">module</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="transformation.html#transformation.transformation">transformation (class in transformation)</a>
+      <li>
+    trainingpoints
+
+      <ul>
+        <li><a href="main/trainingpoints.html#module-trainingpoints">module</a>
+</li>
+      </ul></li>
+      <li><a href="main/trainingpoints.html#trainingpoints.trainingset">trainingset (class in trainingpoints)</a>
+</li>
+      <li>
+    transformation
+
+      <ul>
+        <li><a href="ml/transformation.html#module-transformation">module</a>
+</li>
+      </ul></li>
+      <li><a href="ml/transformation.html#transformation.transformation">transformation (class in transformation)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    weaklensing
+
+      <ul>
+        <li><a href="cosmology/weaklensing.html#module-weaklensing">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cosmology/weaklensing.html#weaklensing.spectra.wl_power_spec">wl_power_spec() (weaklensing.spectra method)</a>
+</li>
+      <li><a href="main/training.html#training.worker">worker() (in module training)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -327,11 +688,11 @@
 <h2 id="X">X</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="transformation.html#transformation.transformation.x_transform">x_transform() (transformation.transformation method)</a>
+      <li><a href="ml/transformation.html#transformation.transformation.x_transform">x_transform() (transformation.transformation method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="transformation.html#transformation.transformation.x_transform_test">x_transform_test() (transformation.transformation method)</a>
+      <li><a href="ml/transformation.html#transformation.transformation.x_transform_test">x_transform_test() (transformation.transformation method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -339,14 +700,27 @@
 <h2 id="Y">Y</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="transformation.html#transformation.transformation.y_inv_transform_test">y_inv_transform_test() (transformation.transformation method)</a>
+      <li><a href="ml/transformation.html#transformation.transformation.y_inv_transform_test">y_inv_transform_test() (transformation.transformation method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="transformation.html#transformation.transformation.y_transform">y_transform() (transformation.transformation method)</a>
+      <li><a href="ml/transformation.html#transformation.transformation.y_transform">y_transform() (transformation.transformation method)</a>
 </li>
-      <li><a href="transformation.html#transformation.transformation.y_transform_test">y_transform_test() (transformation.transformation method)</a>
+      <li><a href="ml/transformation.html#transformation.transformation.y_transform_test">y_transform_test() (transformation.transformation method)</a>
 </li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    zerogp
+
+      <ul>
+        <li><a href="ml/zerogp.html#module-zerogp">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

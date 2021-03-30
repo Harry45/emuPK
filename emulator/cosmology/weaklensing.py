@@ -1,4 +1,4 @@
-# Author: (Dr to be) Arrykrishna Mootoovaloo
+# Author: Arrykrishna Mootoovaloo
 # Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
 # Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
@@ -65,7 +65,7 @@ class spectra(sp.matterspectrum, cr.nz_dist):
         1) nz_model_2: dist_prop = {alpha: 2, beta: 1.5}
         2) nz_gaussian: dist_prop = {sigma: [0.25, 0.25]}
 
-        if we are using 2 tomographic bins in the latter
+        If we are using 2 tomographic bins in the latter
 
         :return: red_args (dict) - a dictionary with the redshift and heights
         '''
@@ -110,8 +110,7 @@ class spectra(sp.matterspectrum, cr.nz_dist):
 
         :param: d (dict) - a dictionary with all the parameters (keys and values)
 
-        :return: pk_matter (np.ndarray), quant (dict) - an array for the non-linear matter power spectrum
-        and a dictionary with the important quantities related to cosmology
+        :return: pk_matter (np.ndarray), quant (dict) - an array for the non-linear matter power spectrum and a dictionary with the important quantities related to cosmology
         '''
 
         # extract redshift
@@ -176,6 +175,12 @@ class spectra(sp.matterspectrum, cr.nz_dist):
         Power spectrum calculation using the functional form of the n(z) distribution
 
         :param: d (dict) - a dictionary for the parameters
+
+        :return: cl_ee (dict) - the auto- and cross- EE power spectra
+
+        :return: cl_gi (dict) - the auto- and cross- GI power spectra
+
+        :return: cl_ii (dict) - the auto- and cross- II power spectra
         '''
 
         # get matter power spectrum and important quantities

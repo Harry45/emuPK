@@ -1,6 +1,6 @@
 # Author: Arrykrishna Mootoovaloo
-# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-# Email : a.mootoovaloo17@imperial.ac.uk
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
 
@@ -16,18 +16,18 @@ class transformation:
     '''
     Module to perform all relevant transformation, for example, pre-whitening the inputs and
     logarithm (supports log10 transformation) for the outputs.
-
-    :param: theta (np.ndarray) : matrix of size N x d
-
-    :param: y (np.ndarray) : a vector of the output
-
-    :param: N is the number of training points
-
-    :param: d is the dimensionality of the problem
     '''
 
-    def __init__(self, theta, y):
+    def __init__(self, theta: np.ndarray, y: np.ndarray):
+        '''
+        :param: theta (np.ndarray) : matrix of size N x d
 
+        :param: y (np.ndarray) : a vector of the output
+
+        :param: N is the number of training points
+
+        :param: d is the dimensionality of the problem
+        '''
         # input
         self.theta = theta
 
@@ -44,16 +44,7 @@ class transformation:
         # y is a vector of size N
         self.y = y.reshape(self.N, 1)
 
-        # the transformation matrix
-        self.mu_matrix = None
-
-        # the transformed input parameters
-        self.theta_trans = None
-
-        # store the transformed output
-        self.y_trans = None
-
-    def x_transform(self):
+    def x_transform(self) -> np.ndarray:
         '''
         Transform the inputs (pre-whitening step)
 
@@ -80,7 +71,7 @@ class transformation:
 
         return theta_trans
 
-    def x_transform_test(self, xtest):
+    def x_transform_test(self, xtest: np.ndarray) -> np.ndarray:
         '''
         Given a test point, we transform the test point in the appropriate basis
 
@@ -97,7 +88,7 @@ class transformation:
 
         return x_trans
 
-    def y_transform(self):
+    def y_transform(self) -> np.ndarray:
         '''
         Transform the output (depends on whether we want this criterion)
 
@@ -133,7 +124,7 @@ class transformation:
 
             return y_trans
 
-    def y_transform_test(self, y_original):
+    def y_transform_test(self, y_original: np.ndarray) -> np.ndarray:
         '''
         Given a response/output which is not in the training set, this
         function will do the forward log_10 transformation.
@@ -147,7 +138,7 @@ class transformation:
 
         return y_trans_test
 
-    def y_inv_transform_test(self, y_test):
+    def y_inv_transform_test(self, y_test: np.ndarray) -> np.ndarray:
         '''
         Given a response (a prediction), this function will do
         the inverse transformation (from log_10 to the original function).

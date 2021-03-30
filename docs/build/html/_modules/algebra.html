@@ -81,15 +81,22 @@
               
             
             
-              <p class="caption"><span class="caption-text">Usage</span></p>
+              <p class="caption"><span class="caption-text">Configurations</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../wl.html">Weak Lensing Power Spectrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html">Basic Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingStarted.html#example">Example</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Codes</span></p>
+<p class="caption"><span class="caption-text">Main</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../priors.html">Priors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/modules.html">Emulator Build-Up</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Cosmology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cosmology/modules.html">3D Matter Power Spectrum</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ml/modules.html">Gaussian Process</a></li>
 </ul>
 
             
@@ -155,8 +162,8 @@
             
   <h1>Source code for algebra</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Author: Arrykrishna Mootoovaloo</span>
-<span class="c1"># Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq</span>
-<span class="c1"># Email : a.mootoovaloo17@imperial.ac.uk</span>
+<span class="c1"># Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq</span>
+<span class="c1"># Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk</span>
 <span class="c1"># Affiliation : Imperial Centre for Inference and Cosmology</span>
 <span class="c1"># Status : Under Development</span>
 
@@ -165,11 +172,10 @@
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">sl</span>
 <span class="kn">from</span> <span class="nn">GPy.util</span> <span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">gpl</span>
 
 
-<div class="viewcode-block" id="solve"><a class="viewcode-back" href="../algebra.html#algebra.solve">[docs]</a><span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">b_vec</span><span class="p">,</span> <span class="n">return_chol</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="solve"><a class="viewcode-back" href="../ml/algebra.html#algebra.solve">[docs]</a><span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b_vec</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">return_chol</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given a matrix and a vector, this solves for x in the following:</span>
 
@@ -185,7 +191,7 @@
 
 <span class="sd">    :return: dummy (np.ndarray) : &#39;x&#39; in the equation above</span>
 
-<span class="sd">    If return_chol is True,</span>
+<span class="sd">    If we want the Cholesky factor:</span>
 
 <span class="sd">    :return: chol_factor (np.ndarray) : the Cholesky factor is returned</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -216,7 +222,7 @@
             <span class="k">return</span> <span class="n">dummy</span></div>
 
 
-<div class="viewcode-block" id="matrix_inverse"><a class="viewcode-back" href="../algebra.html#algebra.matrix_inverse">[docs]</a><span class="k">def</span> <span class="nf">matrix_inverse</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">return_chol</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="matrix_inverse"><a class="viewcode-back" href="../ml/algebra.html#algebra.matrix_inverse">[docs]</a><span class="k">def</span> <span class="nf">matrix_inverse</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">return_chol</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Sometimes, we would need the matrix inverse as well</span>
 
@@ -228,7 +234,7 @@
 
 <span class="sd">    :return: dummy (np.ndarray) : matrix inverse</span>
 
-<span class="sd">    If return_chol is True,</span>
+<span class="sd">    If we also want the Cholesky factor:</span>
 
 <span class="sd">    :return: chol_factor (np.ndarray) : the Cholesky factor</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -256,13 +262,13 @@
             <span class="k">return</span> <span class="n">dummy</span></div>
 
 
-<div class="viewcode-block" id="diagonal"><a class="viewcode-back" href="../algebra.html#algebra.diagonal">[docs]</a><span class="k">def</span> <span class="nf">diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="diagonal"><a class="viewcode-back" href="../ml/algebra.html#algebra.diagonal">[docs]</a><span class="k">def</span> <span class="nf">diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Check if a matrix is diagonal</span>
 
 <span class="sd">    :param: matrix (np.ndarray) : matrix of size N x N</span>
 
-<span class="sd">    :return: ond (bool) : if diagonal, True</span>
+<span class="sd">    :return: cond (bool) : if diagonal, True</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">matrix</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">matrix</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

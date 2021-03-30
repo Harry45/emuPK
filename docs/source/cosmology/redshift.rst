@@ -1,7 +1,7 @@
-Helpers
-*******
+Redshift
+========
 
-.. automodule:: helpers
+.. automodule:: redshift
    :members:
    :undoc-members:
    :show-inheritance:

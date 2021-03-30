@@ -1,7 +1,7 @@
-Helpers
-*******
+Training
+========
 
-.. automodule:: helpers
+.. automodule:: training
    :members:
    :undoc-members:
    :show-inheritance:

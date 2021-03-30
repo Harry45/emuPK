@@ -1,11 +1,11 @@
 # Author: Arrykrishna Mootoovaloo
-# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-# Email : a.mootoovaloo17@imperial.ac.uk
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
 
 '''
-Description : Routine to train all GPs in parallel to emulate the 3D Power Spectrum
+Routine to train all GPs in parallel to emulate the 3D Power Spectrum
 '''
 
 import numpy as np
@@ -22,7 +22,7 @@ np.set_printoptions(precision=4, suppress=True)
 logger = uc.get_logger('training', 'training_one_plus_q', 'logs')
 
 
-def train(cosmologies, target, folder_name, fname, kwargs):
+def train(cosmologies: np.ndarray, target: np.ndarray, folder_name: str, fname: str, kwargs: dict) -> None:
     '''
     Function to train GPs
 
@@ -32,7 +32,7 @@ def train(cosmologies, target, folder_name, fname, kwargs):
 
     :param: folder_name (str) : name of the folder where the outputs are stored
 
-    :param: file_name (str) : name of the GP output
+    :param: fname (str) : name of the GP output
 
     :param: kwargs (dict) : a dictionary with the settings for the GPs, for example, lambda_cap = 1000
     '''
@@ -58,7 +58,7 @@ def train(cosmologies, target, folder_name, fname, kwargs):
         pass
 
 
-def worker(args):
+def worker(args: list) -> None:
     '''
     The argument here is simply the name of the output vector
 
@@ -67,7 +67,14 @@ def worker(args):
     train(*args)
 
 
-def parallel_training(arguments):
+def parallel_training(arguments: list) -> None:
+    '''
+    Call the parallel processing routine here
+
+    :param: arguments (list) - list of arguments (inputs) to train the GPs
+
+    :return: None
+    '''
 
     # count number of CPU
     ncpu = mp.cpu_count()
@@ -78,7 +85,14 @@ def parallel_training(arguments):
     pool.close()
 
 
-def main(directory:str = 'semigps'):
+def main(directory: str = 'semigps') -> None:
+    '''
+    Main function to train all the Gaussian Process models.
+
+    :param: directory (str) - directory where the GPs are stored.
+
+    :return: None
+    '''
 
     # if we are using the 3 components and excluding neutrino
     if st.components and not st.neutrino:
@@ -122,9 +136,9 @@ def main(directory:str = 'semigps'):
         # idea: should we use log-transformation for A(z) and q(k,z) or 1 + q(k,z)?
         # solution: option for the user to try these possibilities in any case;
         # perform training in parallel
-        # parallel_training(arg_gf)
+        parallel_training(arg_gf)
         parallel_training(arg_qf)
-        # parallel_training(arg_pl)
+        parallel_training(arg_pl)
 
     # if we are using the 3 components and excluding neutrino
     if st.components and st.neutrino:

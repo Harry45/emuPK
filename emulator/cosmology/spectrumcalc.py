@@ -1,6 +1,6 @@
 # Author: Arrykrishna Mootoovaloo
-# Collaborators: Alan Heavens, Andrew Jaffe, Florent Leclercq
-# Email : a.mootoovaloo17@imperial.ac.uk
+# Collaborators: Prof. Alan Heavens, Prof. Andrew Jaffe, Dr. Florent Leclercq
+# Email : arrykrish@gmail.com/a.mootoovaloo17@imperial.ac.uk
 # Affiliation : Imperial Centre for Inference and Cosmology
 # Status : Under Development
 
@@ -23,11 +23,12 @@ class matterspectrum(cl.powerclass):
     '''
     Routine to sample the cosmological and nuisance parameters. We have variaous options here.
     We can either use the emulator to calculate the 3D matter power spectrum or we can use CLASS itself.
-
-    :param: emulator (bool) - if True, the emulator is used, else CLASS is used
     '''
 
     def __init__(self, emulator=True):
+        '''
+        :param: emulator (bool) - if True, the emulator is used, else CLASS is used
+        '''
 
         self.emulator = emulator
 
@@ -46,6 +47,7 @@ class matterspectrum(cl.powerclass):
         Load all the trained Gaussian Processes.
 
         :param: directory (str) - the directory where the GPs are stored (depends on our choice:
+
         - zero mean GP
         - semi-GP (DEFAULT: semigps)
 
