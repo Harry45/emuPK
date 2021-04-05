@@ -26,7 +26,7 @@ logger = uc.get_logger('trainingpoints', 'class_runs_neutrino', 'logs')
 
 def CLASS_RUN(module: object, parameter: np.ndarray, index: int) -> Tuple[bool, dict]:
     '''
-    Run CLASS given an input parameter
+    Run CLASS given an input parameter to generate the training points (outputs)
 
     :param: module (object) - the CLASS module
 
