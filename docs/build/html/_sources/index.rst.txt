@@ -75,7 +75,7 @@ If you use this code in your research, please cite these papers `2005.06551
 
 .. 	@ARTICLE{2022A&C....3800508M,
 .. 		   author = {{Mootoovaloo}, A. and {Jaffe}, A.~H. and {Heavens}, A.~F. and {Leclercq}, F.},
-.. 			title = {Kernel-based emulator for the 3D matter power spectrum from CLASS},
+.. 			title = "{Kernel-based emulator for the 3D matter power spectrum from CLASS}",
 .. 		  journal = {Astronomy and Computing},
 .. 		 keywords = {Kernel, Gaussian Process, Emulation, Large scale structures, Astrophysics - Cosmology and Nongalactic Astrophysics},
 .. 			 year = 2022,
