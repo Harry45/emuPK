@@ -43,7 +43,7 @@ def main(ntest: int = 1, a_bary: float = 1.0) -> Tuple[np.ndarray, np.ndarray]:
     gp_model = sc.matterspectrum(emulator=True)
 
     # additional line to load all the GPs (no need for this if emulator=False - falls back to CLASS)
-    gp_model.load_gps(directory='semigps')
+    gp_model.load_gps(directory='semigps/Paper-2-GPs')
 
     # create empty list to store all the information
     cl_rec = []

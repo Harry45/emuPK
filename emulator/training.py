@@ -19,7 +19,7 @@ import settings as st
 
 np.set_printoptions(precision=4, suppress=True)
 
-logger = uc.get_logger('training', 'training_one_plus_q', 'logs')
+logger = uc.get_logger('training', 'training', 'logs')
 
 
 def train(cosmologies: np.ndarray, target: np.ndarray, folder_name: str, fname: str, kwargs: dict) -> None:

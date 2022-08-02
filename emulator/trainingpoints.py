@@ -30,7 +30,7 @@ def CLASS_RUN(module: object, parameter: np.ndarray, index: int) -> Tuple[bool, 
 
     :param: module (object) - the CLASS module
 
-    :param: parameter (np.ndarray) - the input cosmology
+    :param: parameter (np.ndarray) - the input cosmology, either 5 dimensions or 6 dimensions
 
     :index: i*th cosmology from the LHS file
 
@@ -217,6 +217,6 @@ class trainingset(object):
 
 if __name__ == "__main__":
 
-    training_points = trainingset(lhs='maximin_1000_6D')
+    training_points = trainingset(lhs='maximin_1000_5D')
     cosmologies = training_points.scale(save=False)
     outputs = training_points.targets(cosmologies, save=True)

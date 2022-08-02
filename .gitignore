@@ -1,3 +1,12 @@
+# our files and folders
+logs/
+predictions/
+tests/
+semigps/pknl_components_1/
+trainingset/components/new/
+plots/Paper-Plots/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

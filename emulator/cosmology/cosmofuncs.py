@@ -315,7 +315,10 @@ def marg_params(d: dict):
         nuisance[k] = d[k]
 
     # additional settings if we want to include neutrinos
-    other = {'N_ncdm': 1.0, 'deg_ncdm': 3.0, 'T_ncdm': 0.71611, 'N_ur': 0.00641}
+    # other = {'N_ncdm': 1.0, 'deg_ncdm': 3.0, 'T_ncdm': 0.71611, 'N_ur': 0.00641}
+
+    # using this for KV-450 survey
+    other = {'N_eff': 2.0328, 'N_ncdm': 1, 'T_ncdm': 0.71611}
 
     # additional settings if we want to include neutrinos
     if st.neutrino:
@@ -328,7 +331,8 @@ def marg_params(d: dict):
         # neutrino is fixed to some value
         par_neutrino = st.fixed_nm['M_tot']
 
-    neutrino = {'m_ncdm': par_neutrino / other['deg_ncdm']}
+    # neutrino = {'m_ncdm': par_neutrino / other['deg_ncdm']}
+    neutrino = {'m_ncdm': par_neutrino}
 
     return cosmo, other, neutrino, nuisance
 

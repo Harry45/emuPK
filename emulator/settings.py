@@ -47,7 +47,7 @@ mode = 'halofit'
 halofit_k_per_decade = 80.  # default in CLASS is 80
 
 # a smaller value will lead to a more precise halofit result at the
-# *highest* redshift at which halofit can make computations,at the expense
+# highest redshift at which halofit can make computations,at the expense
 # of requiring a larger k_max; but this parameter is not relevant for the
 # precision on P_nl(k,z) at other redshifts, so there is normally no need
 # to change it
@@ -87,6 +87,15 @@ nk_new = 1000
 
 # new number of z (interpolated)
 nz_new = 100
+
+# curvature
+Omega_k = 0.
+
+# pivot scale in $ Mpc^{-1}$
+k_pivot = 0.05
+
+# Big Bang Nucleosynthesis
+bbn = '/home/harry/Desktop/class/bbn/sBBN.dat'
 
 # -----------------------------------------------------------------------------
 
@@ -188,7 +197,7 @@ del_kernel = True
 gf_args = {'y_trans': False, 'lambda_cap': 1}
 
 # if we want to emulate 1 + q(k,z):
-emu_one_plus_q = True
+emu_one_plus_q = False
 
 if emu_one_plus_q:
 

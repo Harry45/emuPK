@@ -54,6 +54,7 @@ class powerclass(object):
                                'halofit_k_per_decade': st.halofit_k_per_decade,
                                'halofit_sigma_precision': st.halofit_sigma_precision}
 
+
         # need to check addtional inputs if we use HMcode
         else:
             self.class_args = {'z_max_pk': self.zmax,
@@ -63,6 +64,10 @@ class powerclass(object):
                                'eta_0': st.eta,
                                'cmin': st.cmin}
 
+        self.class_args['k_pivot'] = st.k_pivot
+        self.class_args['sBBN file'] = st.bbn
+        self.class_args['Omega_k'] = st.Omega_k
+        
         # redshift range
         self.redshifts = np.linspace(self.zmin, self.zmax, st.nz, endpoint=True)
 
