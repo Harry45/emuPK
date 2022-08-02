@@ -19,11 +19,11 @@ emuPK
 	  - Prior
 
 	* - :math:`\Omega_{\text{cdm}}h^{2}`
-	  - CDM density 
+	  - CDM density
 	  - :math:`\mathcal{U}[0.06, 0.40]`
 
 	* - :math:`\Omega_{\text{b}}h^{2}`
-	  - Baryon density 
+	  - Baryon density
 	  - :math:`\mathcal{U}[0.019, 0.026]`
 
 	* - :math:`\text{ln}(10^{10}A_{s})`
@@ -31,7 +31,7 @@ emuPK
 	  - :math:`\mathcal{U}[1.7, 5.0]`
 
 	* - :math:`n_{s}`
-	  - Scalar spectral index 
+	  - Scalar spectral index
 	  - :math:`\mathcal{U}[0.7, 1.3]`
 
 	* - :math:`h`
@@ -46,7 +46,9 @@ Including the neutrino mass is an optional step in the process of building the e
 
 **Citation**
 
-If you use this code in your research, please cite the following papers: `Paper 1 <https://arxiv.org/abs/2005.06551>`_ and Paper 2 (in preparation):
+If you use this code in your research, please cite these papers `2005.06551
+<https://arxiv.org/abs/2005.06551>`_ and `2105.02256
+<https://arxiv.org/abs/2105.02256>`_:
 
 .. code-block:: tex
 
@@ -69,6 +71,25 @@ If you use this code in your research, please cite the following papers: `Paper 
 	      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
 	}
 
+.. code-block:: tex
+
+	@ARTICLE{2022A&C....3800508M,
+		   author = {{Mootoovaloo}, A. and {Jaffe}, A.~H. and {Heavens}, A.~F. and {Leclercq}, F.},
+			title = {Kernel-based emulator for the 3D matter power spectrum from CLASS},
+		  journal = {Astronomy and Computing},
+		 keywords = {Kernel, Gaussian Process, Emulation, Large scale structures, Astrophysics - Cosmology and Nongalactic Astrophysics},
+			 year = 2022,
+			month = jan,
+		   volume = {38},
+			  eid = {100508},
+			pages = {100508},
+			  doi = {10.1016/j.ascom.2021.100508},
+	archivePrefix = {arXiv},
+		   eprint = {2105.02256},
+	 primaryClass = {astro-ph.CO},
+		   adsurl = {https://ui.adsabs.harvard.edu/abs/2022A&C....3800508M},
+		  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+	}
 
 We explain briefly how the emulator can be used in a weak lensing analysis and we also provide an example to illustrate the performance of the emulator. Here we provide a brief overview of the code structure. Please see `Github <https://github.com/Harry45/emuPK>`_ for full code structure. We do not cover each code in full detail here.
 
